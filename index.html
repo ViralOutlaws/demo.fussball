@@ -2,235 +2,220 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>360 Grad Akademie – CRM</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --pitch:#0a1628;--pitch2:#0f1f38;--pitch3:#162847;
-  --lime:#b8f400;--lime2:#ceff44;--lime-dim:#7aad00;
-  --white:#f0f4ff;--off:#c8d4e8;--muted:#6b7e9f;
-  --border:#1e3050;--border2:#243a5e;
-  --red:#ff3b3b;--amber:#f59e0b;--blue:#3b82f6;--cyan:#06b6d4;
-  --card:#0d1e35;--card2:#111f38;
-  --shadow:0 2px 16px rgba(0,0,0,.4);--shadow-lg:0 8px 40px rgba(0,0,0,.6);
-  --r:8px;
+--bg:#f4f4f2;--bg2:#ebebea;--surface:#ffffff;--surface2:#f9f9f8;
+--border:#e2e2de;--border2:#d0d0cb;
+--text:#1a1a18;--text2:#4a4a46;--muted:#8a8a84;
+--accent:#1a1a18;--accent2:#2d2d2a;
+--danger:#b83232;--warning:#a06a00;--success:#2a6044;
+--r:8px;
 }
-body{font-family:'Rajdhani',sans-serif;background:var(--pitch);color:var(--white);min-height:100vh;display:flex;letter-spacing:.2px}
-
-/* PITCH TEXTURE */
-body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.012) 60px,rgba(255,255,255,.012) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.012) 60px,rgba(255,255,255,.012) 61px);pointer-events:none;z-index:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;font-size:14px;line-height:1.5}
 
 /* SIDEBAR */
-.sidebar{width:232px;min-height:100vh;background:var(--pitch2);display:flex;flex-direction:column;position:fixed;left:0;top:0;bottom:0;z-index:100;border-right:1px solid var(--border)}
-.sidebar-logo{padding:20px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
-.logo-ball{width:44px;height:44px;background:var(--lime);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;box-shadow:0 0 20px rgba(184,244,0,.3)}
-.logo-text h1{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--white);letter-spacing:2px;line-height:1}
-.logo-text span{font-size:10px;color:var(--lime);letter-spacing:3px;text-transform:uppercase}
-.nav{padding:10px 0;flex:1}
-.nav-section{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);padding:14px 16px 5px}
-.nav-item{display:flex;align-items:center;gap:10px;padding:9px 16px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;transition:all .15s;border-left:3px solid transparent;letter-spacing:.5px;text-transform:uppercase}
-.nav-item:hover{color:var(--white);background:rgba(184,244,0,.05)}
-.nav-item.active{color:var(--lime);background:rgba(184,244,0,.08);border-left-color:var(--lime)}
-.nav-item .ico{font-size:14px;width:18px;text-align:center}
-.sidebar-bottom{padding:14px 16px;border-top:1px solid var(--border)}
-.aka-badge{background:rgba(184,244,0,.08);border:1px solid rgba(184,244,0,.2);border-radius:6px;padding:10px 12px}
-.aka-badge .an{font-size:12px;font-weight:700;color:var(--lime);letter-spacing:1px}
-.aka-badge .as{font-size:10px;color:var(--muted);letter-spacing:.5px}
+.sidebar{width:220px;min-height:100vh;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;left:0;top:0;bottom:0;z-index:100}
+.logo{padding:18px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.logo-icon{width:36px;height:36px;background:var(--text);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;flex-shrink:0}
+.logo-text{line-height:1.2}
+.logo-text h1{font-family:'DM Serif Display',serif;font-size:16px;font-weight:400;color:var(--text)}
+.logo-text span{font-size:10px;color:var(--muted);letter-spacing:.5px}
+.nav{padding:8px 0;flex:1;overflow-y:auto}
+.nav-section{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:14px 14px 4px}
+.nav-item{display:flex;align-items:center;gap:8px;padding:7px 14px;font-size:13px;font-weight:400;color:var(--text2);cursor:pointer;transition:all .12s;border-left:2px solid transparent;margin:1px 0}
+.nav-item:hover{color:var(--text);background:var(--bg)}
+.nav-item.active{color:var(--text);background:var(--bg2);border-left-color:var(--text);font-weight:500}
+.sidebar-footer{padding:12px 14px;border-top:1px solid var(--border)}
+.aka-info{font-size:11px;color:var(--muted)}
+.aka-info strong{display:block;font-size:12px;color:var(--text);margin-bottom:2px}
 
 /* MAIN */
-.main{margin-left:232px;flex:1;position:relative;z-index:1}
-.topbar{background:rgba(13,30,53,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
-.topbar-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--white)}
-.topbar-right{display:flex;align-items:center;gap:12px}
-.live-pill{background:rgba(184,244,0,.1);border:1px solid rgba(184,244,0,.3);color:var(--lime);font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:1.5px;text-transform:uppercase;display:flex;align-items:center;gap:5px}
-.live-dot{width:6px;height:6px;background:var(--lime);border-radius:50%;animation:pulse 1.5s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
-.avatar{width:34px;height:34px;background:linear-gradient(135deg,var(--lime),var(--lime-dim));border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:14px;font-weight:400;color:var(--pitch);letter-spacing:1px}
-.page{display:none;padding:24px;animation:fadeIn .2s ease}
+.main{margin-left:220px;flex:1;min-height:100vh}
+.topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--text)}
+.topbar-right{display:flex;align-items:center;gap:10px}
+.date-pill{font-size:11px;color:var(--muted);background:var(--bg2);border:1px solid var(--border);padding:3px 10px;border-radius:20px;font-family:'DM Mono',monospace}
+.avatar{width:30px;height:30px;background:var(--text);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:11px;color:#fff;font-weight:500}
+.page{display:none;padding:24px;animation:fi .18s ease}
 .page.active{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes fi{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
-/* KPI */
-.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
-.kpi{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;position:relative;overflow:hidden}
-.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--lime)}
-.kpi.red::before{background:var(--red)}
-.kpi.blue::before{background:var(--blue)}
-.kpi.amber::before{background:var(--amber)}
-.kpi-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-.kpi-value{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--white);line-height:1;letter-spacing:1px}
+/* KPIs */
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.kpi{background:var(--surface);border:1px solid var(--border);border-top:2px solid var(--border2);border-radius:var(--r);padding:16px 18px}
+.kpi.k-warn{border-top-color:var(--warning)}
+.kpi.k-ok{border-top-color:var(--success)}
+.kpi.k-danger{border-top-color:var(--danger)}
+.kpi.k-dark{border-top-color:var(--text)}
+.kpi-label{font-size:10px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.kpi-value{font-family:'DM Serif Display',serif;font-size:32px;color:var(--text);line-height:1}
 .kpi-sub{font-size:11px;color:var(--muted);margin-top:4px}
-.up{color:var(--lime);font-weight:700}
-.down{color:var(--red);font-weight:700}
+.up{color:var(--success);font-weight:600}
+.dn{color:var(--danger);font-weight:600}
 
 /* CARDS */
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
-.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:20px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px}
-.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.card-title{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1.5px;color:var(--white)}
-.card-action{font-size:11px;color:var(--lime);cursor:pointer;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:16px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px}
+.card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.card-title{font-size:13px;font-weight:600;color:var(--text)}
+.card-link{font-size:11px;color:var(--muted);cursor:pointer;font-weight:500}
+.card-link:hover{color:var(--text)}
 
-/* TABLE */
+/* TABLES */
 .tbl{width:100%;border-collapse:collapse}
-.tbl th{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-align:left;padding:0 0 8px;font-weight:700;border-bottom:1px solid var(--border)}
-.tbl td{padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--off);vertical-align:middle}
+.tbl th{font-size:10px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);text-align:left;padding:0 8px 8px 0;border-bottom:1px solid var(--border)}
+.tbl td{padding:9px 8px 9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);vertical-align:middle}
 .tbl tr:last-child td{border-bottom:none}
-.tbl tr:hover td{background:rgba(184,244,0,.03)}
+.tbl tbody tr:hover td{background:var(--bg)}
+.tbl-full{padding:0}
+.tbl-full .tbl th:first-child,.tbl-full .tbl td:first-child{padding-left:16px}
+.tbl-full .tbl th:last-child,.tbl-full .tbl td:last-child{padding-right:16px}
 
 /* BADGES */
-.badge{display:inline-flex;align-items:center;font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 8px;border-radius:3px;text-transform:uppercase}
-.b-lime{background:rgba(184,244,0,.15);color:var(--lime)}
-.b-red{background:rgba(255,59,59,.15);color:#ff6b6b}
-.b-amber{background:rgba(245,158,11,.15);color:#fbbf24}
-.b-blue{background:rgba(59,130,246,.15);color:#60a5fa}
-.b-cyan{background:rgba(6,182,212,.15);color:#22d3ee}
-.b-gray{background:rgba(107,126,159,.15);color:var(--muted)}
-.b-purple{background:rgba(139,92,246,.15);color:#a78bfa}
-
-/* SPIELER PROFIL */
-.spieler-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.spieler-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
-.spieler-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--border);transition:background .2s}
-.spieler-card:hover{border-color:var(--lime);transform:translateY(-2px);box-shadow:0 4px 20px rgba(184,244,0,.1)}
-.spieler-card:hover::after{background:var(--lime)}
-.spieler-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.spieler-avatar{width:48px;height:48px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--pitch);flex-shrink:0}
-.spieler-name{font-size:15px;font-weight:700;color:var(--white);line-height:1.2}
-.spieler-pos{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
-.spieler-alter{font-size:10px;color:var(--lime);font-weight:700}
-.skills-row{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
-.skill-bar-wrap{margin-bottom:8px}
-.skill-label{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:3px;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
-.skill-bar{height:4px;background:var(--border2);border-radius:2px;overflow:hidden}
-.skill-fill{height:100%;border-radius:2px;transition:width .5s}
-.spieler-footer{display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--border)}
-.next-training{font-size:10px;color:var(--muted)}
-.einheiten-count{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--lime);letter-spacing:1px}
-
-/* TRAININGSPLAN */
-.wochenplan{display:grid;grid-template-columns:80px repeat(7,1fr);gap:6px}
-.wp-header{background:var(--card2);border-radius:4px;padding:6px;text-align:center;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
-.wp-time{padding:6px 8px;font-size:10px;color:var(--muted);display:flex;align-items:center;justify-content:flex-end;font-family:'DM Mono',monospace}
-.wp-cell{min-height:52px;background:var(--card2);border-radius:4px;cursor:pointer;border:1px solid var(--border)}
-.wp-event{padding:6px 8px;border-radius:4px;height:100%;font-size:10px;font-weight:600;line-height:1.3;cursor:pointer;transition:opacity .15s}
-.wp-event:hover{opacity:.8}
-.wp-event.einzel{background:rgba(184,244,0,.15);border:1px solid rgba(184,244,0,.3);color:var(--lime)}
-.wp-event.gruppe{background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);color:#60a5fa}
-.wp-event.camp{background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.3);color:#fbbf24}
-.wp-event.voll{background:rgba(255,59,59,.1);border:1px solid rgba(255,59,59,.3);color:#ff6b6b}
-.wp-name{font-weight:700;font-size:10px}
-.wp-detail{font-size:9px;opacity:.7;margin-top:1px}
-
-/* ENTWICKLUNG TRACKING */
-.radar-wrap{position:relative;display:flex;justify-content:center;align-items:center}
-.progress-ring{display:flex;flex-direction:column;gap:8px}
-.prog-item{display:flex;align-items:center;gap:10px}
-.prog-label{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--off);min-width:110px}
-.prog-bar-wrap{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden}
-.prog-fill{height:100%;border-radius:4px;transition:width .8s cubic-bezier(.4,0,.2,1)}
-.prog-val{font-family:'DM Mono',monospace;font-size:11px;color:var(--lime);min-width:30px;text-align:right}
-
-/* TIMELINE NOTIZEN */
-.notiz-item{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--border)}
-.notiz-item:last-child{border-bottom:none}
-.notiz-date{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);min-width:65px;line-height:1.8}
-.notiz-dot{width:8px;height:8px;border-radius:50%;background:var(--lime);flex-shrink:0;margin-top:5px}
-.notiz-dot.red{background:var(--red)}
-.notiz-dot.blue{background:var(--blue)}
-.notiz-dot.amber{background:var(--amber)}
-.notiz-content{flex:1}
-.notiz-type{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--lime);margin-bottom:3px}
-.notiz-type.red{color:#ff6b6b}
-.notiz-type.blue{color:#60a5fa}
-.notiz-type.amber{color:#fbbf24}
-.notiz-text{font-size:13px;color:var(--off);line-height:1.5}
-.notiz-trainer{font-size:10px;color:var(--muted);margin-top:3px}
+.badge{display:inline-flex;align-items:center;font-size:10px;font-weight:600;letter-spacing:.4px;padding:2px 7px;border-radius:3px}
+.b-neutral{background:var(--bg2);color:var(--text2)}
+.b-dark{background:var(--text);color:#fff}
+.b-warn{background:#fef3cd;color:#7a4f00}
+.b-danger{background:#fde8e8;color:#8b1f1f}
+.b-ok{background:#e4f0e8;color:#1f5434}
+.b-info{background:#e8edf7;color:#1f3a6b}
 
 /* BUTTONS */
-.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;border:none;font-family:'Rajdhani',sans-serif;transition:all .15s;letter-spacing:1px;text-transform:uppercase}
-.btn-lime{background:var(--lime);color:var(--pitch)}
-.btn-lime:hover{background:var(--lime2)}
-.btn-outline{background:transparent;border:1.5px solid var(--border2);color:var(--off)}
-.btn-outline:hover{border-color:var(--lime);color:var(--lime)}
-.btn-sm{padding:5px 12px;font-size:11px}
-.btn-danger{background:rgba(255,59,59,.15);border:1px solid rgba(255,59,59,.3);color:#ff6b6b}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--text);transition:all .12s}
+.btn:hover{background:var(--bg);border-color:var(--border2)}
+.btn-dark{background:var(--text);color:#fff;border-color:var(--text)}
+.btn-dark:hover{background:var(--accent2);border-color:var(--accent2)}
+.btn-sm{padding:4px 10px;font-size:12px}
+
+/* NOTIZ FEED */
+.feed-item{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
+.feed-item:last-child{border-bottom:none}
+.feed-dot{width:7px;height:7px;border-radius:50%;background:var(--border2);flex-shrink:0;margin-top:5px}
+.feed-dot.d-warn{background:var(--warning)}
+.feed-dot.d-ok{background:var(--success)}
+.feed-dot.d-danger{background:var(--danger)}
+.feed-dot.d-info{background:#4a6db5}
+.feed-time{font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;width:54px;flex-shrink:0;padding-top:2px}
+.feed-tag{font-size:10px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.feed-tag.t-warn{color:var(--warning)}
+.feed-tag.t-danger{color:var(--danger)}
+.feed-tag.t-ok{color:var(--success)}
+.feed-tag.t-info{color:#4a6db5}
+.feed-text{font-size:12px;color:var(--text2);line-height:1.4}
+
+/* SPIELER CARDS */
+.spieler-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.sp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px;cursor:pointer;transition:all .15s;border-bottom:2px solid var(--border)}
+.sp-card:hover{border-color:var(--border2);border-bottom-color:var(--text);transform:translateY(-1px)}
+.sp-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.sp-av{width:42px;height:42px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:#fff;flex-shrink:0}
+.sp-name{font-size:14px;font-weight:600;color:var(--text);line-height:1.2}
+.sp-pos{font-size:11px;color:var(--muted);margin-top:1px}
+.sp-age{font-size:11px;color:var(--text2);margin-top:1px}
+.skill-row{margin-bottom:6px}
+.skill-lbl{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:2px;font-weight:500}
+.skill-track{height:3px;background:var(--bg2);border-radius:2px;overflow:hidden}
+.skill-fill{height:100%;border-radius:2px;background:var(--text);transition:width .4s}
+.sp-footer{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+.sp-next{font-size:11px;color:var(--muted)}
+.sp-count{text-align:right}
+.sp-num{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:var(--text)}
+.sp-num-lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
 
 /* SEARCH */
-.search-row{display:flex;gap:10px;margin-bottom:16px;align-items:center}
-.search-input{background:var(--card);border:1.5px solid var(--border2);border-radius:6px;padding:8px 14px;font-size:13px;font-family:'Rajdhani',sans-serif;outline:none;color:var(--white);width:280px}
-.search-input::placeholder{color:var(--muted)}
-.search-input:focus{border-color:var(--lime)}
+.search-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.search-input{flex:1;min-width:200px;padding:7px 12px;border:1px solid var(--border);border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:13px;background:var(--surface);color:var(--text);outline:none}
+.search-input:focus{border-color:var(--border2)}
+
+/* SECTION HEAD */
+.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.sec-title{font-family:'DM Serif Display',serif;font-size:22px;font-weight:400;color:var(--text)}
+.sec-sub{font-size:12px;color:var(--muted);margin-top:2px}
+
+/* DETAIL */
+.detail-grid{display:grid;grid-template-columns:280px 1fr;gap:16px}
+.prog-item{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.prog-lbl{font-size:12px;color:var(--text2);width:160px;flex-shrink:0}
+.prog-track{flex:1;height:4px;background:var(--bg2);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;border-radius:2px;background:var(--text)}
+.prog-val{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:var(--text);width:24px;text-align:right}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.stat-item{text-align:center;padding:10px 6px;background:var(--bg);border-radius:var(--r)}
+.stat-val{font-family:'DM Serif Display',serif;font-size:22px;color:var(--text)}
+.stat-lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+
+/* TRAININGSPLAN */
+.wochenplan{display:grid;grid-template-columns:52px repeat(7,1fr);gap:2px}
+.wp-header{font-size:11px;font-weight:600;color:var(--muted);text-align:center;padding:6px 2px;text-transform:uppercase;letter-spacing:.5px}
+.wp-time{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);padding:4px 2px;display:flex;align-items:center}
+.wp-cell{min-height:52px;background:var(--bg);border-radius:4px}
+.wp-event{min-height:52px;border-radius:4px;padding:5px 7px;cursor:pointer;transition:opacity .12s}
+.wp-event:hover{opacity:.8}
+.wp-einzel{background:#e8ecf4;border-left:2px solid #4a6db5}
+.wp-gruppe{background:#e4f0e8;border-left:2px solid #2a6044}
+.wp-camp{background:#fef3cd;border-left:2px solid var(--warning)}
+.wp-name{font-size:11px;font-weight:600;color:var(--text)}
+.wp-detail{font-size:10px;color:var(--muted);margin-top:2px}
 
 /* PAKETE */
-.paket-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.paket{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:22px;position:relative;transition:border-color .2s}
-.paket:hover{border-color:var(--lime)}
-.paket.featured{border-color:var(--lime);background:linear-gradient(135deg,rgba(184,244,0,.06),var(--card))}
-.paket-hot{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--lime);color:var(--pitch);font-size:9px;font-weight:700;padding:3px 12px;border-radius:20px;letter-spacing:1.5px;text-transform:uppercase}
-.paket-name{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1.5px;color:var(--white);margin-bottom:4px}
-.paket-price{font-family:'Bebas Neue',sans-serif;font-size:34px;color:var(--lime);letter-spacing:1px}
-.paket-period{font-size:11px;color:var(--muted);margin-bottom:14px;letter-spacing:.5px}
-.paket-feature{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--off);padding:4px 0;font-weight:500}
-.paket-feature::before{content:'⚽';font-size:10px}
-
-/* MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
-.modal-overlay.open{display:flex}
-.modal{background:var(--card);border:1px solid var(--border2);border-radius:10px;padding:24px;width:520px;max-width:95vw;box-shadow:var(--shadow-lg);animation:modalIn .2s ease}
-@keyframes modalIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:none}}
-.modal-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;margin-bottom:18px;color:var(--white)}
-.field{margin-bottom:12px}
-.field label{display:block;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-.field input,.field select,.field textarea{width:100%;background:var(--pitch2);border:1.5px solid var(--border2);border-radius:6px;padding:9px 12px;font-family:'Rajdhani',sans-serif;font-size:13px;outline:none;color:var(--white)}
-.field input:focus,.field select:focus{border-color:var(--lime)}
-.field textarea{color:var(--off)}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.modal-footer{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}
-
-/* DETAIL VIEW */
-.spieler-detail{display:grid;grid-template-columns:300px 1fr;gap:20px}
-.detail-left{display:flex;flex-direction:column;gap:14px}
-.detail-profile{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px;text-align:center}
-.detail-avatar{width:80px;height:80px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--pitch);margin:0 auto 12px}
-.detail-name{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;color:var(--white);margin-bottom:2px}
-.detail-meta{font-size:11px;color:var(--muted);letter-spacing:.5px;margin-bottom:12px}
-.stat-row{display:flex;justify-content:space-around;padding:12px 0;border-top:1px solid var(--border)}
-.stat-item{text-align:center}
-.stat-val{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--lime);letter-spacing:1px}
-.stat-label{font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
-.detail-right{display:flex;flex-direction:column;gap:14px}
+.paket-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.paket{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:20px}
+.paket.featured{border-color:var(--text);border-width:1.5px}
+.paket-name{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;margin-bottom:4px}
+.paket-price{font-family:'DM Mono',monospace;font-size:28px;font-weight:500;color:var(--text)}
+.paket-period{font-size:11px;color:var(--muted);margin-bottom:14px}
+.paket-feat{font-size:12px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px}
+.paket-feat:last-of-type{border-bottom:none}
+.paket-hot{font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text);background:var(--bg2);border:1px solid var(--border);border-radius:3px;padding:2px 8px;display:inline-flex;margin-bottom:10px}
 
 /* BAR CHART */
-.bar-chart{display:flex;align-items:flex-end;gap:5px;height:80px}
-.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px}
-.bar{width:100%;border-radius:3px 3px 0 0;min-height:3px;cursor:pointer;transition:opacity .15s}
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:100px;margin-bottom:8px}
+.bar-col{display:flex;flex-direction:column;align-items:center;flex:1;height:100%}
+.bar-val{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--text2);margin-bottom:3px}
+.bar{width:100%;border-radius:3px 3px 0 0;min-height:3px;background:var(--text);cursor:pointer;transition:opacity .12s}
 .bar:hover{opacity:.7}
-.bar-label{font-size:9px;color:var(--muted);font-weight:600;letter-spacing:.5px;text-transform:uppercase}
-.bar-val{font-size:9px;font-weight:700;color:var(--off)}
+.bar-lbl{font-size:9px;color:var(--muted);font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-top:3px}
 
-/* NOTIF */
-.notif{position:fixed;bottom:20px;right:20px;background:var(--pitch2);color:var(--lime);padding:12px 18px;border-radius:6px;font-size:13px;font-weight:700;z-index:300;display:none;border:1px solid rgba(184,244,0,.3);box-shadow:0 4px 20px rgba(0,0,0,.5);letter-spacing:.5px}
+/* KANAL TAG */
+.kanal-tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:3px;background:var(--bg2);color:var(--text2)}
 
-/* SECTION HEADER */
-.section-header{margin-bottom:20px}
-.section-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:var(--white)}
-.section-sub{font-size:12px;color:var(--muted);letter-spacing:.5px;margin-top:2px}
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:200;display:none;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:24px;width:480px;max-width:95vw;max-height:90vh;overflow-y:auto}
+.modal-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;margin-bottom:16px;color:var(--text)}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.field input,.field select,.field textarea{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:13px;background:var(--surface);color:var(--text);outline:none;transition:border .12s}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--border2)}
+.field textarea{resize:vertical;min-height:80px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.modal-footer{display:flex;justify-content:flex-end;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
 
-/* DIVIDER */
-.divider{height:1px;background:var(--border);margin:14px 0}
+/* ALARM */
+.alarm-item{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid var(--border)}
+.alarm-item:last-child{border-bottom:none}
+.alarm-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.alarm-body{flex:1}
+.alarm-tag{font-size:10px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin-bottom:1px}
+.alarm-text{font-size:12px;color:var(--text2)}
 
-/* ELTERN TAG */
-.eltern-tag{display:inline-flex;align-items:center;gap:4px;font-size:10px;color:var(--muted);background:var(--pitch2);border:1px solid var(--border);padding:2px 7px;border-radius:3px;font-weight:600;letter-spacing:.5px}
+/* NOTIF TOAST */
+.notif{position:fixed;bottom:20px;right:20px;background:var(--text);color:#fff;padding:10px 16px;border-radius:var(--r);font-size:12px;font-weight:500;z-index:300;display:none;box-shadow:0 4px 20px rgba(0,0,0,.25);letter-spacing:.2px;max-width:360px}
+
+.divider{height:1px;background:var(--border);margin:12px 0}
 </style>
 </head>
 <body>
 
 <aside class="sidebar">
-  <div class="sidebar-logo">
-    <div class="logo-ball">⚽</div>
+  <div class="logo">
+    <div class="logo-icon">⚽</div>
     <div class="logo-text">
       <h1>360 Grad</h1>
       <span>Akademie · CRM</span>
@@ -238,22 +223,21 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   </div>
   <nav class="nav">
     <div class="nav-section">Übersicht</div>
-    <div class="nav-item active" onclick="showPage('dashboard')"><span class="ico">◈</span> Dashboard</div>
+    <div class="nav-item active" onclick="showPage('dashboard')">◈ Dashboard</div>
     <div class="nav-section">Spieler</div>
-    <div class="nav-item" onclick="showPage('spieler')"><span class="ico">👤</span> Spieler & Profile</div>
-    <div class="nav-item" onclick="showPage('detail')"><span class="ico">📊</span> Spieler-Detail</div>
+    <div class="nav-item" onclick="showPage('spieler')">◎ Spieler & Profile</div>
+    <div class="nav-item" onclick="showPage('detail')">▦ Spieler-Detail</div>
     <div class="nav-section">Training</div>
-    <div class="nav-item" onclick="showPage('trainingsplan')"><span class="ico">📅</span> Trainingsplan</div>
-    <div class="nav-item" onclick="showPage('einheiten')"><span class="ico">⚽</span> Trainingseinheiten</div>
+    <div class="nav-item" onclick="showPage('trainingsplan')">◫ Trainingsplan</div>
+    <div class="nav-item" onclick="showPage('einheiten')">⬡ Einheiten</div>
+    <div class="nav-section">Kommunikation</div>
+    <div class="nav-item" onclick="showPage('kommunikation')">◷ Eltern-Kommunikation</div>
     <div class="nav-section">Business</div>
-    <div class="nav-item" onclick="showPage('pakete')"><span class="ico">📦</span> Pakete & Preise</div>
-    <div class="nav-item" onclick="showPage('finanzen')"><span class="ico">◎</span> Finanzen</div>
+    <div class="nav-item" onclick="showPage('pakete')">◻ Pakete & Preise</div>
+    <div class="nav-item" onclick="showPage('finanzen')">◈ Finanzen</div>
   </nav>
-  <div class="sidebar-bottom">
-    <div class="aka-badge">
-      <div class="an">⚽ 360 Grad Akademie</div>
-      <div class="as">42 Aktive Spieler · Pro</div>
-    </div>
+  <div class="sidebar-footer">
+    <div class="aka-info"><strong>360 Grad Akademie</strong>42 Aktive Spieler · Pro</div>
   </div>
 </aside>
 
@@ -261,7 +245,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   <div class="topbar">
     <div class="topbar-title" id="page-title">Dashboard</div>
     <div class="topbar-right">
-      <div class="live-pill"><div class="live-dot"></div>3 Einheiten heute</div>
+      <div class="date-pill">Fr. 09.05.2026</div>
       <div class="avatar">360</div>
     </div>
   </div>
@@ -269,292 +253,178 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   <!-- DASHBOARD -->
   <div class="page active" id="page-dashboard">
     <div class="kpi-grid">
-      <div class="kpi">
-        <div class="kpi-label">Aktive Spieler</div>
-        <div class="kpi-value">42</div>
-        <div class="kpi-sub"><span class="up">↑ +4</span> diesen Monat</div>
-      </div>
-      <div class="kpi amber">
-        <div class="kpi-label">Einheiten Mai</div>
-        <div class="kpi-value">184</div>
-        <div class="kpi-sub">Einzel: 112 · Gruppe: 72</div>
-      </div>
-      <div class="kpi blue">
-        <div class="kpi-label">Umsatz Mai</div>
-        <div class="kpi-value">11.840 €</div>
-        <div class="kpi-sub"><span class="up">↑ +14%</span> vs. April</div>
-      </div>
-      <div class="kpi red">
-        <div class="kpi-label">Ausstehend</div>
-        <div class="kpi-value">3</div>
-        <div class="kpi-sub">Zahlungen offen</div>
-      </div>
+      <div class="kpi k-dark"><div class="kpi-label">Aktive Spieler</div><div class="kpi-value">42</div><div class="kpi-sub"><span class="up">↑ +4</span> diesen Monat</div></div>
+      <div class="kpi k-warn"><div class="kpi-label">Einheiten Mai</div><div class="kpi-value">184</div><div class="kpi-sub">Einzel: 112 · Gruppe: 72</div></div>
+      <div class="kpi k-ok"><div class="kpi-label">Umsatz Mai</div><div class="kpi-value">11.840 €</div><div class="kpi-sub"><span class="up">↑ +14%</span> vs. April</div></div>
+      <div class="kpi k-danger"><div class="kpi-label">Ausstehend</div><div class="kpi-value">3</div><div class="kpi-sub">Zahlungen offen</div></div>
     </div>
-
-    <div class="grid-2">
+    <div class="g2">
       <div class="card">
-        <div class="card-header"><div class="card-title">Heute auf dem Platz</div><span class="badge b-lime">Fr. 09.05.</span></div>
+        <div class="card-head"><div class="card-title">Heute auf dem Platz</div><span class="badge b-neutral">Fr. 09.05.</span></div>
         <table class="tbl">
-          <thead><tr><th>Zeit</th><th>Einheit</th><th>Spieler</th><th>Trainer</th><th>Status</th></tr></thead>
+          <thead><tr><th>Zeit</th><th>Einheit</th><th>Spieler</th><th>Status</th></tr></thead>
           <tbody>
-            <tr onclick="notify('09:00 · Einzeltraining · Luca Wagner · Technik & Dribbling · Platz A')"><td><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--lime)">09:00</span></td><td><strong>Einzeltraining</strong></td><td>Luca Wagner</td><td>Coach Marco</td><td><span class="badge b-amber">Läuft</span></td></tr>
-            <tr onclick="notify('11:00 · Gruppe (6) · Technik Mittelfeld · Platz B')"><td><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--lime)">11:00</span></td><td><strong>Gruppentraining</strong></td><td>6 Spieler</td><td>Coach Marco</td><td><span class="badge b-amber">Läuft</span></td></tr>
-            <tr onclick="notify('14:00 · Einzeltraining · Tim Berger · Torschuss · Platz A')"><td><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--lime)">14:00</span></td><td><strong>Einzeltraining</strong></td><td>Tim Berger</td><td>Coach Sarah</td><td><span class="badge b-blue">Geplant</span></td></tr>
-            <tr onclick="notify('16:00 · Gruppe (8) · Taktik · Platz A+B')"><td><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--lime)">16:00</span></td><td><strong>Gruppentraining</strong></td><td>8 Spieler</td><td>Coach Sarah</td><td><span class="badge b-blue">Geplant</span></td></tr>
+            <tr onclick="notify('09:00 · Einzeltraining · Luca Wagner · Technik & Dribbling')"><td><span style="font-family:'DM Mono',monospace;font-size:11px">09:00</span></td><td><strong>Einzeltraining</strong></td><td>Luca Wagner</td><td><span class="badge b-warn">Läuft</span></td></tr>
+            <tr onclick="notify('11:00 · Gruppe (6) · Technik Mittelfeld')"><td><span style="font-family:'DM Mono',monospace;font-size:11px">11:00</span></td><td><strong>Gruppentraining</strong></td><td>6 Spieler</td><td><span class="badge b-warn">Läuft</span></td></tr>
+            <tr onclick="notify('14:00 · Einzeltraining · Tim Berger · Torschuss')"><td><span style="font-family:'DM Mono',monospace;font-size:11px">14:00</span></td><td><strong>Einzeltraining</strong></td><td>Tim Berger</td><td><span class="badge b-info">Geplant</span></td></tr>
+            <tr onclick="notify('16:00 · Gruppe (8) · Taktik · Platz A+B')"><td><span style="font-family:'DM Mono',monospace;font-size:11px">16:00</span></td><td><strong>Gruppentraining</strong></td><td>8 Spieler</td><td><span class="badge b-info">Geplant</span></td></tr>
           </tbody>
         </table>
       </div>
-
       <div class="card">
-        <div class="card-header"><div class="card-title">Aktivitäten</div></div>
-        <div class="notiz-item">
-          <div class="notiz-date">09:30</div>
-          <div class="notiz-dot"></div>
-          <div class="notiz-content"><div class="notiz-type">Training</div><div class="notiz-text"><strong>Luca Wagner</strong> – Starke Session heute! Dribbling merklich verbessert, Schwäche links bleibt</div><div class="notiz-trainer">Coach Marco · Einzeltraining</div></div>
-        </div>
-        <div class="notiz-item">
-          <div class="notiz-date">gestern</div>
-          <div class="notiz-dot amber"></div>
-          <div class="notiz-content"><div class="notiz-type amber">Eltern</div><div class="notiz-text">Mutter von <strong>Felix Huber</strong> angerufen – möchte auf Premium-Paket upgraden</div><div class="notiz-trainer">Büro · Telefonat</div></div>
-        </div>
-        <div class="notiz-item">
-          <div class="notiz-date">gestern</div>
-          <div class="notiz-dot blue"></div>
-          <div class="notiz-content"><div class="notiz-type blue">Fortschritt</div><div class="notiz-text"><strong>Jonas Klein</strong> hat Meilenstein erreicht: 50. Trainingseinheit! 🏆</div><div class="notiz-trainer">Automatisch · System</div></div>
-        </div>
-        <div class="notiz-item">
-          <div class="notiz-date">07.05.</div>
-          <div class="notiz-dot red"></div>
-          <div class="notiz-content"><div class="notiz-type red">Verletzung</div><div class="notiz-text"><strong>Max Richter</strong> – Leichte Muskelverhärtung Oberschenkel links. 1 Woche Pause</div><div class="notiz-trainer">Coach Marco · Verletzungsprotokoll</div></div>
-        </div>
+        <div class="card-head"><div class="card-title">Aktivitäten</div></div>
+        <div class="feed-item"><div class="feed-time">09:30</div><div class="feed-dot d-ok"></div><div class="feed-body"><div class="feed-tag t-ok">Training</div><div class="feed-text"><strong>Luca Wagner</strong> – Dribbling deutlich verbessert, Fokus linker Fuß bleibt</div></div></div>
+        <div class="feed-item"><div class="feed-time">gestern</div><div class="feed-dot d-warn"></div><div class="feed-body"><div class="feed-tag t-warn">Eltern</div><div class="feed-text">Mutter von <strong>Felix Huber</strong> – möchte auf Premium-Paket upgraden</div></div></div>
+        <div class="feed-item"><div class="feed-time">gestern</div><div class="feed-dot d-info"></div><div class="feed-body"><div class="feed-tag t-info">Meilenstein</div><div class="feed-text"><strong>Jonas Klein</strong> hat 50. Trainingseinheit erreicht</div></div></div>
+        <div class="feed-item"><div class="feed-time">07.05.</div><div class="feed-dot d-danger"></div><div class="feed-body"><div class="feed-tag t-danger">Verletzung</div><div class="feed-text"><strong>Max Richter</strong> – Muskelverhärtung Oberschenkel. Pause bis 16.05.</div></div></div>
       </div>
     </div>
-
-    <div class="grid-3">
+    <div class="g3">
       <div class="card">
-        <div class="card-header"><div class="card-title">Top Entwickler</div><span class="card-action" onclick="showPage('spieler')">Alle →</span></div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)">
-            <div style="display:flex;align-items:center;gap:10px"><div style="width:30px;height:30px;background:var(--lime);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--pitch)">LW</div><div><div style="font-size:13px;font-weight:700">Luca Wagner</div><div style="font-size:10px;color:var(--muted)">ST · 14 J.</div></div></div>
-            <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--lime);font-weight:700">+24%</span>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)">
-            <div style="display:flex;align-items:center;gap:10px"><div style="width:30px;height:30px;background:var(--blue);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:13px;color:#fff">JK</div><div><div style="font-size:13px;font-weight:700">Jonas Klein</div><div style="font-size:10px;color:var(--muted)">ZM · 12 J.</div></div></div>
-            <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--lime);font-weight:700">+18%</span>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0">
-            <div style="display:flex;align-items:center;gap:10px"><div style="width:30px;height:30px;background:var(--amber);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--pitch)">TB</div><div><div style="font-size:13px;font-weight:700">Tim Berger</div><div style="font-size:10px;color:var(--muted)">LA · 16 J.</div></div></div>
-            <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--lime);font-weight:700">+15%</span>
-          </div>
+        <div class="card-head"><div class="card-title">Top Entwickler</div><span class="card-link" onclick="showPage('spieler')">Alle →</span></div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><div style="display:flex;align-items:center;gap:8px"><div style="width:28px;height:28px;background:var(--text);border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:11px;color:#fff">LW</div><div><div style="font-size:13px;font-weight:500">Luca Wagner</div><div style="font-size:11px;color:var(--muted)">ST · 14 J.</div></div></div><span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:var(--success)">+24%</span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><div style="display:flex;align-items:center;gap:8px"><div style="width:28px;height:28px;background:#4a6db5;border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:11px;color:#fff">JK</div><div><div style="font-size:13px;font-weight:500">Jonas Klein</div><div style="font-size:11px;color:var(--muted)">ZM · 12 J.</div></div></div><span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:var(--success)">+18%</span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0"><div style="display:flex;align-items:center;gap:8px"><div style="width:28px;height:28px;background:#8a7a50;border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:11px;color:#fff">TB</div><div><div style="font-size:13px;font-weight:500">Tim Berger</div><div style="font-size:11px;color:var(--muted)">LA · 16 J.</div></div></div><span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:var(--success)">+15%</span></div>
         </div>
       </div>
-
       <div class="card">
-        <div class="card-header"><div class="card-title">Einheiten Mai</div></div>
+        <div class="card-head"><div class="card-title">Einheiten Mai</div></div>
         <div class="bar-chart">
-          <div class="bar-col"><div class="bar-val">38</div><div class="bar" style="height:72%;background:var(--lime);opacity:.5"></div><div class="bar-label">W1</div></div>
-          <div class="bar-col"><div class="bar-val">42</div><div class="bar" style="height:80%;background:var(--lime);opacity:.6"></div><div class="bar-label">W2</div></div>
-          <div class="bar-col"><div class="bar-val">52</div><div class="bar" style="height:100%;background:var(--lime);opacity:.8"></div><div class="bar-label">W3</div></div>
-          <div class="bar-col"><div class="bar-val">52</div><div class="bar" style="height:100%;background:var(--lime)"></div><div class="bar-label" style="color:var(--lime)">Lfd.</div></div>
+          <div class="bar-col"><div class="bar-val">38</div><div class="bar" style="height:72%;opacity:.5"></div><div class="bar-lbl">W1</div></div>
+          <div class="bar-col"><div class="bar-val">42</div><div class="bar" style="height:80%;opacity:.6"></div><div class="bar-lbl">W2</div></div>
+          <div class="bar-col"><div class="bar-val">52</div><div class="bar" style="height:100%;opacity:.75"></div><div class="bar-lbl">W3</div></div>
+          <div class="bar-col"><div class="bar-val">52</div><div class="bar" style="height:100%"></div><div class="bar-lbl" style="color:var(--text);font-weight:700">Lfd.</div></div>
         </div>
         <div class="divider"></div>
-        <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--muted)">Einzel</span><strong style="color:var(--lime)">112</strong></div>
-        <div style="display:flex;justify-content:space-between;font-size:12px;margin-top:6px"><span style="color:var(--muted)">Gruppe</span><strong style="color:#60a5fa">72</strong></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span style="color:var(--muted)">Einzel</span><strong>112</strong></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--muted)">Gruppe</span><strong>72</strong></div>
       </div>
-
       <div class="card">
-        <div class="card-header"><div class="card-title">Alarmzone</div></div>
-        <div class="notiz-item" style="padding:8px 0">
-          <div class="notiz-dot red"></div>
-          <div class="notiz-content"><div class="notiz-type red">Verletzt</div><div class="notiz-text" style="font-size:12px"><strong>Max Richter</strong> – Pause bis 16.05.</div></div>
-        </div>
-        <div class="notiz-item" style="padding:8px 0">
-          <div class="notiz-dot amber"></div>
-          <div class="notiz-content"><div class="notiz-type amber">Zahlung</div><div class="notiz-text" style="font-size:12px"><strong>Familie Klein</strong> – Mai-Beitrag offen</div></div>
-        </div>
-        <div class="notiz-item" style="padding:8px 0">
-          <div class="notiz-dot amber"></div>
-          <div class="notiz-content"><div class="notiz-type amber">Inaktiv</div><div class="notiz-text" style="font-size:12px"><strong>Paul Wendt</strong> – 14 Tage kein Training</div></div>
-        </div>
-        <div style="margin-top:12px"><button class="btn btn-sm btn-outline" onclick="notify('Erinnerungen gesendet ✓')">Alle kontaktieren</button></div>
+        <div class="card-head"><div class="card-title">Alarmzone</div></div>
+        <div class="alarm-item"><div class="alarm-dot" style="background:var(--danger)"></div><div class="alarm-body"><div class="alarm-tag" style="color:var(--danger)">Verletzt</div><div class="alarm-text"><strong>Max Richter</strong> – Pause bis 16.05.</div></div></div>
+        <div class="alarm-item"><div class="alarm-dot" style="background:var(--warning)"></div><div class="alarm-body"><div class="alarm-tag" style="color:var(--warning)">Zahlung</div><div class="alarm-text"><strong>Familie Klein</strong> – Mai-Beitrag offen</div></div></div>
+        <div class="alarm-item"><div class="alarm-dot" style="background:var(--warning)"></div><div class="alarm-body"><div class="alarm-tag" style="color:var(--warning)">Inaktiv</div><div class="alarm-text"><strong>Paul Wendt</strong> – 14 Tage kein Training</div></div></div>
+        <div style="margin-top:10px"><button class="btn btn-sm" onclick="notify('Erinnerungen gesendet ✓')">Alle kontaktieren</button></div>
       </div>
     </div>
   </div>
 
   <!-- SPIELER LISTE -->
   <div class="page" id="page-spieler">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
-      <div class="section-header" style="margin-bottom:0"><div class="section-title">Spieler & Profile</div><div class="section-sub">42 aktive Spieler · Einzel & Gruppe</div></div>
-      <button class="btn btn-lime" onclick="openModal('modal-spieler')">+ Spieler</button>
+    <div class="sec-head">
+      <div><div class="sec-title">Spieler & Profile</div><div class="sec-sub">42 aktive Spieler</div></div>
+      <button class="btn btn-dark" onclick="openModal('modal-spieler')">+ Spieler</button>
     </div>
     <div class="search-row">
-      <input class="search-input" placeholder="🔍  Name, Position, Jahrgang…">
-      <button class="btn btn-outline btn-sm">Alle</button>
-      <button class="btn btn-outline btn-sm">Einzel</button>
-      <button class="btn btn-outline btn-sm">Gruppe</button>
-      <button class="btn btn-outline btn-sm">U12</button>
-      <button class="btn btn-outline btn-sm">U16</button>
+      <input class="search-input" placeholder="Name, Position, Jahrgang suchen…">
+      <button class="btn btn-sm">Alle</button><button class="btn btn-sm">Einzel</button><button class="btn btn-sm">Gruppe</button><button class="btn btn-sm">U12</button><button class="btn btn-sm">U16</button>
     </div>
     <div class="spieler-grid">
-      <div class="spieler-card" onclick="showPage('detail')">
-        <div class="spieler-header">
-          <div class="spieler-avatar" style="background:var(--lime)">LW</div>
-          <div><div class="spieler-name">Luca Wagner</div><div class="spieler-pos">Stürmer · Rechtsaußen</div><div class="spieler-alter">14 J. · U15 · seit Jan 2024</div></div>
-        </div>
-        <div class="skills-row"><span class="badge b-lime">Einzel</span><span class="badge b-gray">Premium</span><span class="badge b-blue">Aktiv</span></div>
-        <div class="skill-bar-wrap"><div class="skill-label"><span>Technik</span><span>82</span></div><div class="skill-bar"><div class="skill-fill" style="width:82%;background:var(--lime)"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-label"><span>Schnelligkeit</span><span>76</span></div><div class="skill-bar"><div class="skill-fill" style="width:76%;background:var(--blue)"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-label"><span>Schwacher Fuß</span><span>54</span></div><div class="skill-bar"><div class="skill-fill" style="width:54%;background:var(--amber)"></div></div></div>
-        <div class="spieler-footer"><span class="next-training">Nächstes: Mo 12.05.</span><div><div class="einheiten-count">48</div><div style="font-size:9px;color:var(--muted);letter-spacing:.5px">EINHEITEN</div></div></div>
+      <div class="sp-card" onclick="showPage('detail')">
+        <div class="sp-head"><div class="sp-av" style="background:#2d2d2a">LW</div><div><div class="sp-name">Luca Wagner</div><div class="sp-pos">Stürmer · Rechtsaußen</div><div class="sp-age">14 J. · U15 · seit Jan 2024</div></div></div>
+        <div style="margin-bottom:8px;display:flex;gap:5px"><span class="badge b-dark">Einzel</span><span class="badge b-neutral">Premium</span><span class="badge b-ok">Aktiv</span></div>
+        <div class="skill-row"><div class="skill-lbl"><span>Technik</span><span>82</span></div><div class="skill-track"><div class="skill-fill" style="width:82%"></div></div></div>
+        <div class="skill-row"><div class="skill-lbl"><span>Schnelligkeit</span><span>76</span></div><div class="skill-track"><div class="skill-fill" style="width:76%;opacity:.7"></div></div></div>
+        <div class="skill-row"><div class="skill-lbl"><span>Schwacher Fuß</span><span>54</span></div><div class="skill-track"><div class="skill-fill" style="width:54%;opacity:.45"></div></div></div>
+        <div class="sp-footer"><span class="sp-next">Nächstes: Mo 12.05.</span><div class="sp-count"><div class="sp-num">48</div><div class="sp-num-lbl">Einheiten</div></div></div>
       </div>
-      <div class="spieler-card" onclick="showPage('detail')">
-        <div class="spieler-header">
-          <div class="spieler-avatar" style="background:#60a5fa">JK</div>
-          <div><div class="spieler-name">Jonas Klein</div><div class="spieler-pos">Zentrales Mittelfeld</div><div class="spieler-alter">12 J. · U13 · seit Mär 2024</div></div>
-        </div>
-        <div class="skills-row"><span class="badge b-blue">Gruppe</span><span class="badge b-gray">Standard</span><span class="badge b-lime">Aktiv</span></div>
-        <div class="skill-bar-wrap"><div class="skill-label"><span>Technik</span><span>74</span></div><div class="skill-bar"><div class="skill-fill" style="width:74%;background:var(--lime)"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-label"><span>Spielübersicht</span><span>80</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%;background:var(--blue)"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-label"><span>Zweikampf</span><span>68</span></div><div class="skill-bar"><div class="skill-fill" style="width:68%;background:var(--amber)"></div></div></div>
-        <div class="spieler-footer"><span class="next-training">Nächstes: Di 13.05.</span><div><div class="einheiten-count">50</div><div style="font-size:9px;color:var(--muted);letter-spacing:.5px">EINHEITEN 🏆</div></div></div>
+      <div class="sp-card" onclick="showPage('detail')">
+        <div class="sp-head"><div class="sp-av" style="background:#4a6db5">JK</div><div><div class="sp-name">Jonas Klein</div><div class="sp-pos">Zentrales Mittelfeld</div><div class="sp-age">12 J. · U13 · seit Mär 2024</div></div></div>
+        <div style="margin-bottom:8px;display:flex;gap:5px"><span class="badge b-info">Gruppe</span><span class="badge b-neutral">Standard</span><span class="badge b-ok">Aktiv</span></div>
+        <div class="skill-row"><div class="skill-lbl"><span>Spielübersicht</span><span>80</span></div><div class="skill-track"><div class="skill-fill" style="width:80%"></div></div></div>
+        <div class="skill-row"><div class="skill-lbl"><span>Technik</span><span>74</span></div><div class="skill-track"><div class="skill-fill" style="width:74%;opacity:.7"></div></div></div>
+        <div class="skill-row"><div class="skill-lbl"><span>Zweikampf</span><span>68</span></div><div class="skill-track"><div class="skill-fill" style="width:68%;opacity:.5"></div></div></div>
+        <div class="sp-footer"><span class="sp-next">Nächstes: Di 13.05.</span><div class="sp-count"><div class="sp-num">50</div><div class="sp-num-lbl">Einheiten</div></div></div>
       </div>
-      <div class="spieler-card" onclick="showPage('detail')">
-        <div class="spieler-header">
-          <div class="spieler-avatar" style="background:var(--amber)">TB</div>
-          <div><div class="spieler-name">Tim Berger</div><div class="spieler-pos">Linker Angreifer</div><div class="spieler-alter">16 J. · U17 · seit Sep 2023</div></div>
-        </div>
-        <div class="skills-row"><span class="badge b-lime">Einzel</span><span class="badge b-purple">Elite</span><span class="badge b-lime">Aktiv</span></div>
-        <div class="skill-bar-wrap"><div class="skill-label"><span>Technik</span><span>88</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%;background:var(--lime)"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-label"><span>Torschuss</span><span>84</span></div><div class="skill-bar"><div class="skill-fill" style="width:84%;background:var(--blue)"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-label"><span>Ausdauer</span><span>72</span></div><div class="skill-bar"><div class="skill-fill" style="width:72%;background:var(--amber)"></div></div></div>
-        <div class="spieler-footer"><span class="next-training">Nächstes: Fr 09.05. 14:00</span><div><div class="einheiten-count">94</div><div style="font-size:9px;color:var(--muted);letter-spacing:.5px">EINHEITEN</div></div></div>
+      <div class="sp-card" onclick="showPage('detail')">
+        <div class="sp-head"><div class="sp-av" style="background:#8a7a50">TB</div><div><div class="sp-name">Tim Berger</div><div class="sp-pos">Linker Angreifer</div><div class="sp-age">16 J. · U17 · seit Sep 2023</div></div></div>
+        <div style="margin-bottom:8px;display:flex;gap:5px"><span class="badge b-dark">Einzel</span><span class="badge b-neutral">Elite</span><span class="badge b-ok">Aktiv</span></div>
+        <div class="skill-row"><div class="skill-lbl"><span>Technik</span><span>88</span></div><div class="skill-track"><div class="skill-fill" style="width:88%"></div></div></div>
+        <div class="skill-row"><div class="skill-lbl"><span>Torschuss</span><span>84</span></div><div class="skill-track"><div class="skill-fill" style="width:84%;opacity:.7"></div></div></div>
+        <div class="skill-row"><div class="skill-lbl"><span>Ausdauer</span><span>72</span></div><div class="skill-track"><div class="skill-fill" style="width:72%;opacity:.5"></div></div></div>
+        <div class="sp-footer"><span class="sp-next">Nächstes: Fr 09.05. 14:00</span><div class="sp-count"><div class="sp-num">94</div><div class="sp-num-lbl">Einheiten</div></div></div>
       </div>
-      <div class="spieler-card" onclick="showPage('detail')">
-        <div class="spieler-header">
-          <div class="spieler-avatar" style="background:#a78bfa">FH</div>
-          <div><div class="spieler-name">Felix Huber</div><div class="spieler-pos">Innenverteidiger</div><div class="spieler-alter">13 J. · U14 · seit Jun 2023</div></div>
-        </div>
-        <div class="skills-row"><span class="badge b-blue">Gruppe</span><span class="badge b-gray">Standard</span><span class="badge b-lime">Aktiv</span></div>
-        <div class="skill-bar-wrap"><div class="skill-label"><span>Technik</span><span>71</span></div><div class="skill-bar"><div class="skill-fill" style="width:71%;background:var(--lime)"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-label"><span>Kopfball</span><span>78</span></div><div class="skill-bar"><div class="skill-fill" style="width:78%;background:var(--blue)"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-label"><span>Positionsspiel</span><span>66</span></div><div class="skill-bar"><div class="skill-fill" style="width:66%;background:var(--amber)"></div></div></div>
-        <div class="spieler-footer"><span class="next-training">Nächstes: Di 13.05.</span><div><div class="einheiten-count">38</div><div style="font-size:9px;color:var(--muted);letter-spacing:.5px">EINHEITEN</div></div></div>
+      <div class="sp-card" onclick="showPage('detail')">
+        <div class="sp-head"><div class="sp-av" style="background:#6b5b8a">FH</div><div><div class="sp-name">Felix Huber</div><div class="sp-pos">Innenverteidiger</div><div class="sp-age">13 J. · U14 · seit Jun 2023</div></div></div>
+        <div style="margin-bottom:8px;display:flex;gap:5px"><span class="badge b-info">Gruppe</span><span class="badge b-neutral">Standard</span><span class="badge b-ok">Aktiv</span></div>
+        <div class="skill-row"><div class="skill-lbl"><span>Kopfball</span><span>78</span></div><div class="skill-track"><div class="skill-fill" style="width:78%"></div></div></div>
+        <div class="skill-row"><div class="skill-lbl"><span>Technik</span><span>71</span></div><div class="skill-track"><div class="skill-fill" style="width:71%;opacity:.7"></div></div></div>
+        <div class="skill-row"><div class="skill-lbl"><span>Positionsspiel</span><span>66</span></div><div class="skill-track"><div class="skill-fill" style="width:66%;opacity:.5"></div></div></div>
+        <div class="sp-footer"><span class="sp-next">Nächstes: Di 13.05.</span><div class="sp-count"><div class="sp-num">38</div><div class="sp-num-lbl">Einheiten</div></div></div>
       </div>
-      <div class="spieler-card" onclick="notify('Max Richter – Verletzungspause bis 16.05.')">
-        <div class="spieler-header">
-          <div class="spieler-avatar" style="background:var(--red)">MR</div>
-          <div><div class="spieler-name">Max Richter</div><div class="spieler-pos">Torwart</div><div class="spieler-alter">15 J. · U15 · seit Feb 2024</div></div>
-        </div>
-        <div class="skills-row"><span class="badge b-lime">Einzel</span><span class="badge b-gray">Standard</span><span class="badge b-red">Verletzt</span></div>
-        <div class="skill-bar-wrap"><div class="skill-label"><span>Reflexe</span><span>85</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%;background:var(--lime)"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-label"><span>Abwurf</span><span>70</span></div><div class="skill-bar"><div class="skill-fill" style="width:70%;background:var(--blue)"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-label"><span>Strafraumbeherr.</span><span>74</span></div><div class="skill-bar"><div class="skill-fill" style="width:74%;background:var(--amber)"></div></div></div>
-        <div class="spieler-footer"><span class="next-training" style="color:var(--red)">Pause bis 16.05. ⚠️</span><div><div class="einheiten-count">26</div><div style="font-size:9px;color:var(--muted);letter-spacing:.5px">EINHEITEN</div></div></div>
+      <div class="sp-card" onclick="notify('Max Richter – Verletzungspause bis 16.05.')">
+        <div class="sp-head"><div class="sp-av" style="background:#8b3030">MR</div><div><div class="sp-name">Max Richter</div><div class="sp-pos">Torwart</div><div class="sp-age">15 J. · U15 · seit Feb 2024</div></div></div>
+        <div style="margin-bottom:8px;display:flex;gap:5px"><span class="badge b-dark">Einzel</span><span class="badge b-neutral">Standard</span><span class="badge b-danger">Verletzt</span></div>
+        <div class="skill-row"><div class="skill-lbl"><span>Reflexe</span><span>85</span></div><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-row"><div class="skill-lbl"><span>Strafraumbeherr.</span><span>74</span></div><div class="skill-track"><div class="skill-fill" style="width:74%;opacity:.7"></div></div></div>
+        <div class="skill-row"><div class="skill-lbl"><span>Abwurf</span><span>70</span></div><div class="skill-track"><div class="skill-fill" style="width:70%;opacity:.5"></div></div></div>
+        <div class="sp-footer"><span class="sp-next" style="color:var(--danger)">Pause bis 16.05.</span><div class="sp-count"><div class="sp-num">26</div><div class="sp-num-lbl">Einheiten</div></div></div>
       </div>
-      <div class="spieler-card" onclick="showPage('detail')">
-        <div class="spieler-header">
-          <div class="spieler-avatar" style="background:var(--cyan)">PW</div>
-          <div><div class="spieler-name">Paul Wendt</div><div class="spieler-pos">Rechtes Mittelfeld</div><div class="spieler-alter">11 J. · U12 · seit Jan 2025</div></div>
-        </div>
-        <div class="skills-row"><span class="badge b-blue">Gruppe</span><span class="badge b-gray">Starter</span><span class="badge b-amber">Inaktiv</span></div>
-        <div class="skill-bar-wrap"><div class="skill-label"><span>Technik</span><span>58</span></div><div class="skill-bar"><div class="skill-fill" style="width:58%;background:var(--lime)"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-label"><span>Einsatzwille</span><span>62</span></div><div class="skill-bar"><div class="skill-fill" style="width:62%;background:var(--blue)"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-label"><span>Teamspiel</span><span>70</span></div><div class="skill-bar"><div class="skill-fill" style="width:70%;background:var(--amber)"></div></div></div>
-        <div class="spieler-footer"><span class="next-training" style="color:var(--amber)">Letztes: vor 14 Tagen ⚠️</span><div><div class="einheiten-count">12</div><div style="font-size:9px;color:var(--muted);letter-spacing:.5px">EINHEITEN</div></div></div>
+      <div class="sp-card" onclick="showPage('detail')">
+        <div class="sp-head"><div class="sp-av" style="background:#3a7a72">PW</div><div><div class="sp-name">Paul Wendt</div><div class="sp-pos">Rechtes Mittelfeld</div><div class="sp-age">11 J. · U12 · seit Jan 2025</div></div></div>
+        <div style="margin-bottom:8px;display:flex;gap:5px"><span class="badge b-info">Gruppe</span><span class="badge b-neutral">Starter</span><span class="badge b-warn">Inaktiv</span></div>
+        <div class="skill-row"><div class="skill-lbl"><span>Teamspiel</span><span>70</span></div><div class="skill-track"><div class="skill-fill" style="width:70%"></div></div></div>
+        <div class="skill-row"><div class="skill-lbl"><span>Einsatzwille</span><span>62</span></div><div class="skill-track"><div class="skill-fill" style="width:62%;opacity:.7"></div></div></div>
+        <div class="skill-row"><div class="skill-lbl"><span>Technik</span><span>58</span></div><div class="skill-track"><div class="skill-fill" style="width:58%;opacity:.5"></div></div></div>
+        <div class="sp-footer"><span class="sp-next" style="color:var(--warning)">Letztes: vor 14 Tagen</span><div class="sp-count"><div class="sp-num">12</div><div class="sp-num-lbl">Einheiten</div></div></div>
       </div>
     </div>
   </div>
 
   <!-- SPIELER DETAIL -->
   <div class="page" id="page-detail">
-    <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
-      <button class="btn btn-outline btn-sm" onclick="showPage('spieler')">← Zurück</button>
-      <div class="section-title">Spielerprofil – Luca Wagner</div>
+    <div class="sec-head">
+      <div><button class="btn btn-sm" onclick="showPage('spieler')" style="margin-bottom:8px">← Zurück</button><div class="sec-title">Luca Wagner</div><div class="sec-sub">Stürmer · Rechtsaußen · Jahrgang 2010</div></div>
+      <button class="btn btn-dark" onclick="openModal('modal-notiz')">+ Notiz</button>
     </div>
-    <div class="spieler-detail">
-      <div class="detail-left">
-        <div class="detail-profile">
-          <div class="detail-avatar" style="background:var(--lime)">LW</div>
-          <div class="detail-name">Luca Wagner</div>
-          <div class="detail-meta">Stürmer · Rechtsaußen · Jahrgang 2010</div>
-          <div style="margin-bottom:14px"><span class="badge b-lime">Einzel</span> <span class="badge b-purple">Premium</span> <span class="badge b-lime">Aktiv</span></div>
+    <div class="detail-grid">
+      <div>
+        <div class="card" style="margin-bottom:12px">
+          <div style="display:flex;gap:5px;margin-bottom:12px"><span class="badge b-dark">Einzel</span><span class="badge b-neutral">Premium</span><span class="badge b-ok">Aktiv</span></div>
           <div class="stat-row">
-            <div class="stat-item"><div class="stat-val">48</div><div class="stat-label">Einheiten</div></div>
-            <div class="stat-item"><div class="stat-val">82</div><div class="stat-label">Technik</div></div>
-            <div class="stat-item"><div class="stat-val">+24%</div><div class="stat-label">Fortschritt</div></div>
+            <div class="stat-item"><div class="stat-val">48</div><div class="stat-lbl">Einheiten</div></div>
+            <div class="stat-item"><div class="stat-val">82</div><div class="stat-lbl">Technik</div></div>
+            <div class="stat-item"><div class="stat-val">+24%</div><div class="stat-lbl">Fortschritt</div></div>
+          </div>
+        </div>
+        <div class="card" style="margin-bottom:12px">
+          <div class="card-head"><div class="card-title">Elternkontakt</div></div>
+          <div style="font-size:13px;font-weight:500;margin-bottom:4px">Thomas Wagner (Vater)</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:2px">+49 170 234 5678</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:10px">t.wagner@gmail.com</div>
+          <div style="font-size:12px;color:var(--text2);background:var(--bg);border-radius:6px;padding:10px;border-left:2px solid var(--border2)">"Luca soll unbedingt den schwachen Fuß verbessern." – 02.04.</div>
+          <div style="margin-top:10px;display:flex;gap:6px">
+            <button class="btn btn-sm" onclick="notify('WhatsApp geöffnet')">WhatsApp</button>
+            <button class="btn btn-sm" onclick="notify('E-Mail geöffnet')">E-Mail</button>
           </div>
         </div>
         <div class="card">
-          <div class="card-header"><div class="card-title">Elternkontakt</div></div>
-          <div style="font-size:13px;margin-bottom:6px"><strong>Thomas Wagner</strong> (Vater)</div>
-          <div style="font-size:12px;color:var(--muted);margin-bottom:4px">📱 +49 170 234 5678</div>
-          <div style="font-size:12px;color:var(--muted);margin-bottom:12px">✉️ t.wagner@gmail.com</div>
-          <div style="font-size:12px;color:var(--off);background:var(--pitch2);border-radius:6px;padding:10px;border-left:3px solid var(--lime)">"Luca soll unbedingt den schwachen Fuß verbessern. Bitte besonders darauf achten!" – Letztes Elterngespräch 02.04.</div>
-          <div style="margin-top:12px;display:flex;gap:8px">
-            <button class="btn btn-sm btn-outline" onclick="notify('WhatsApp geöffnet')">💬 WhatsApp</button>
-            <button class="btn btn-sm btn-outline" onclick="notify('E-Mail geöffnet')">✉️ E-Mail</button>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header"><div class="card-title">Paket & Zahlung</div></div>
-          <div style="font-size:13px;margin-bottom:8px"><strong>Premium Einzel</strong> – 2× / Woche</div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span style="color:var(--muted)">Monatsbeitrag</span><strong style="color:var(--lime)">320 €</strong></div>
+          <div class="card-head"><div class="card-title">Paket & Zahlung</div></div>
+          <div style="font-size:13px;font-weight:500;margin-bottom:8px">Premium Einzel – 2× / Woche</div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span style="color:var(--muted)">Monatsbeitrag</span><strong>320 €</strong></div>
           <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span style="color:var(--muted)">Seit</span><strong>Jan 2024</strong></div>
-          <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--muted)">Status</span><span class="badge b-lime">Bezahlt</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--muted)">Status</span><span class="badge b-ok">Bezahlt</span></div>
         </div>
       </div>
-      <div class="detail-right">
-        <div class="card">
-          <div class="card-header"><div class="card-title">Skill-Entwicklung</div><span class="badge b-lime">+24% ↑ seit Jan</span></div>
-          <div class="progress-ring">
-            <div class="prog-item"><div class="prog-label">Technik / Dribbling</div><div class="prog-bar-wrap"><div class="prog-fill" style="width:82%;background:var(--lime)"></div></div><div class="prog-val">82</div></div>
-            <div class="prog-item"><div class="prog-label">Schnelligkeit</div><div class="prog-bar-wrap"><div class="prog-fill" style="width:76%;background:var(--blue)"></div></div><div class="prog-val">76</div></div>
-            <div class="prog-item"><div class="prog-label">Schwacher Fuß (Li.)</div><div class="prog-bar-wrap"><div class="prog-fill" style="width:54%;background:var(--amber)"></div></div><div class="prog-val">54</div></div>
-            <div class="prog-item"><div class="prog-label">Torschuss</div><div class="prog-bar-wrap"><div class="prog-fill" style="width:78%;background:var(--lime)"></div></div><div class="prog-val">78</div></div>
-            <div class="prog-item"><div class="prog-label">Spielübersicht</div><div class="prog-bar-wrap"><div class="prog-fill" style="width:66%;background:var(--cyan)"></div></div><div class="prog-val">66</div></div>
-            <div class="prog-item"><div class="prog-label">Zweikampf</div><div class="prog-bar-wrap"><div class="prog-fill" style="width:70%;background:var(--blue)"></div></div><div class="prog-val">70</div></div>
-            <div class="prog-item"><div class="prog-label">Kondition</div><div class="prog-bar-wrap"><div class="prog-fill" style="width:74%;background:var(--amber)"></div></div><div class="prog-val">74</div></div>
-            <div class="prog-item"><div class="prog-label">Mentalität</div><div class="prog-bar-wrap"><div class="prog-fill" style="width:80%;background:var(--lime)"></div></div><div class="prog-val">80</div></div>
-          </div>
+      <div>
+        <div class="card" style="margin-bottom:12px">
+          <div class="card-head"><div class="card-title">Skill-Entwicklung</div><span class="badge b-ok">+24% seit Jan</span></div>
+          <div class="prog-item"><div class="prog-lbl">Technik / Dribbling</div><div class="prog-track"><div class="prog-fill" style="width:82%"></div></div><div class="prog-val">82</div></div>
+          <div class="prog-item"><div class="prog-lbl">Torschuss</div><div class="prog-track"><div class="prog-fill" style="width:78%;opacity:.85"></div></div><div class="prog-val">78</div></div>
+          <div class="prog-item"><div class="prog-lbl">Schnelligkeit</div><div class="prog-track"><div class="prog-fill" style="width:76%;opacity:.8"></div></div><div class="prog-val">76</div></div>
+          <div class="prog-item"><div class="prog-lbl">Kondition</div><div class="prog-track"><div class="prog-fill" style="width:74%;opacity:.7"></div></div><div class="prog-val">74</div></div>
+          <div class="prog-item"><div class="prog-lbl">Spielübersicht</div><div class="prog-track"><div class="prog-fill" style="width:66%;opacity:.6"></div></div><div class="prog-val">66</div></div>
+          <div class="prog-item"><div class="prog-lbl">Zweikampf</div><div class="prog-track"><div class="prog-fill" style="width:70%;opacity:.65"></div></div><div class="prog-val">70</div></div>
+          <div class="prog-item"><div class="prog-lbl">Schwacher Fuß (Li.)</div><div class="prog-track"><div class="prog-fill" style="width:54%;opacity:.45"></div></div><div class="prog-val">54</div></div>
+          <div class="prog-item"><div class="prog-lbl">Mentalität</div><div class="prog-track"><div class="prog-fill" style="width:80%;opacity:.8"></div></div><div class="prog-val">80</div></div>
         </div>
         <div class="card">
-          <div class="card-header"><div class="card-title">Trainer-Notizen & Verlauf</div><button class="btn btn-sm btn-lime" onclick="openModal('modal-notiz')">+ Notiz</button></div>
-          <div class="notiz-item">
-            <div class="notiz-date">09.05.26</div>
-            <div class="notiz-dot"></div>
-            <div class="notiz-content">
-              <div class="notiz-type">Einheit #48 · Technik</div>
-              <div class="notiz-text">Dribbling deutlich verbessert – besonders der Haken nach innen sitzt jetzt. Schwacher Fuß (links) bleibt das Hauptthema. Nächste 3 Einheiten: 60% Fokus linker Fuß. Luca war hochmotiviert, gute Einstellung.</div>
-              <div class="notiz-trainer">Coach Marco · Einzeltraining · 60 Min.</div>
-            </div>
-          </div>
-          <div class="notiz-item">
-            <div class="notiz-date">05.05.26</div>
-            <div class="notiz-dot blue"></div>
-            <div class="notiz-content">
-              <div class="notiz-type blue">Fortschritt-Update</div>
-              <div class="notiz-text">Monatsbewertung: Technik von 74 auf 82 (+8 Punkte). Schnelligkeit +4. Schwacher Fuß +6 – langsamer Fortschritt aber messbar. Empfehlung: Camp im Sommer für intensiven Push.</div>
-              <div class="notiz-trainer">Coach Marco · Monatsbewertung</div>
-            </div>
-          </div>
-          <div class="notiz-item">
-            <div class="notiz-date">02.04.26</div>
-            <div class="notiz-dot amber"></div>
-            <div class="notiz-content">
-              <div class="notiz-type amber">Elterngespräch</div>
-              <div class="notiz-text">Vater Thomas Wagner angerufen. Sehr zufrieden mit Entwicklung. Wunsch: schwacher Fuß priorisieren. Frage nach Sommercamps – Info-Material geschickt. Familie überlegt Premium-Upgrade auf 3×/Woche.</div>
-              <div class="notiz-trainer">Büro · Telefonat 15 Min.</div>
-            </div>
-          </div>
-          <div class="notiz-item">
-            <div class="notiz-date">15.03.26</div>
-            <div class="notiz-dot"></div>
-            <div class="notiz-content">
-              <div class="notiz-type">Einheit #38 · Torschuss</div>
-              <div class="notiz-text">Torschusstechnik Hauptthema heute. Schuss aus der Bewegung verbessert sich. Noch zu viel Backswing. 3× Videofeedback gezeigt – Luca hat es sofort verstanden und umgesetzt. Talent ist da!</div>
-              <div class="notiz-trainer">Coach Sarah · Einzeltraining · 60 Min.</div>
-            </div>
-          </div>
+          <div class="card-head"><div class="card-title">Trainer-Notizen</div></div>
+          <div class="feed-item"><div class="feed-time">09.05.</div><div class="feed-dot d-ok"></div><div class="feed-body"><div class="feed-tag">Einheit #48 · Technik</div><div class="feed-text">Dribbling deutlich verbessert. Schwacher Fuß bleibt Hauptthema. 3 Einheiten: 60% Fokus links.</div></div></div>
+          <div class="feed-item"><div class="feed-time">05.05.</div><div class="feed-dot d-info"></div><div class="feed-body"><div class="feed-tag t-info">Fortschritt-Update</div><div class="feed-text">Monatsbewertung: Technik +8, Schnelligkeit +4, Schwacher Fuß +6. Empfehlung: Sommercamp.</div></div></div>
+          <div class="feed-item"><div class="feed-time">02.04.</div><div class="feed-dot d-warn"></div><div class="feed-body"><div class="feed-tag t-warn">Elterngespräch</div><div class="feed-text">Vater Thomas Wagner sehr zufrieden. Wunsch: schwacher Fuß priorisieren. Überlegt 3×/Woche.</div></div></div>
+          <div class="feed-item"><div class="feed-time">15.03.</div><div class="feed-dot"></div><div class="feed-body"><div class="feed-tag">Einheit #38 · Torschuss</div><div class="feed-text">Torschusstechnik verbessert sich. Videofeedback sehr effektiv. Talent ist da!</div></div></div>
         </div>
       </div>
     </div>
@@ -562,82 +432,107 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 
   <!-- TRAININGSPLAN -->
   <div class="page" id="page-trainingsplan">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
-      <div class="section-header" style="margin-bottom:0"><div class="section-title">Trainingsplan</div><div class="section-sub">KW 19 · 5.–11. Mai 2026 · 18 Einheiten</div></div>
-      <button class="btn btn-lime" onclick="openModal('modal-einheit')">+ Einheit planen</button>
+    <div class="sec-head">
+      <div><div class="sec-title">Trainingsplan</div><div class="sec-sub">KW 19 · 5.–11. Mai 2026 · 18 Einheiten</div></div>
+      <button class="btn btn-dark" onclick="openModal('modal-einheit')">+ Einheit planen</button>
     </div>
     <div class="card" style="overflow-x:auto">
-      <div class="wochenplan" style="margin-bottom:8px">
+      <div class="wochenplan" style="margin-bottom:4px">
         <div></div>
         <div class="wp-header">Mo</div><div class="wp-header">Di</div><div class="wp-header">Mi</div>
         <div class="wp-header">Do</div><div class="wp-header">Fr</div><div class="wp-header">Sa</div><div class="wp-header">So</div>
       </div>
-      <div class="wochenplan">
-        <div class="wp-time">08:00</div>
-        <div class="wp-cell"></div><div class="wp-cell"></div><div class="wp-cell"></div>
-        <div class="wp-cell"></div><div class="wp-cell"></div>
-        <div class="wp-event camp" onclick="notify('Sa Camp: Intensiv-Block · 8–12 Uhr · 10 Spieler · Coach Marco + Sarah')"><div class="wp-name">⚡ Camp</div><div class="wp-detail">Intensiv-Block</div></div>
-        <div class="wp-cell"></div>
-
+      <div class="wochenplan" style="margin-bottom:4px">
         <div class="wp-time">09:00</div>
-        <div class="wp-event einzel" onclick="notify('Mo 09:00 · Luca Wagner · Technik Dribbling · Platz A · Coach Marco')"><div class="wp-name">Luca W.</div><div class="wp-detail">Technik</div></div>
+        <div class="wp-event wp-einzel" onclick="notify('Mo 09:00 · Luca Wagner · Technik / Dribbling · Coach Marco')"><div class="wp-name">Luca W.</div><div class="wp-detail">Technik</div></div>
         <div class="wp-cell"></div>
-        <div class="wp-event einzel" onclick="notify('Mi 09:00 · Tim Berger · Torschuss · Platz A · Coach Sarah')"><div class="wp-name">Tim B.</div><div class="wp-detail">Torschuss</div></div>
+        <div class="wp-event wp-einzel" onclick="notify('Mi 09:00 · Tim Berger · Torschuss · Coach Sarah')"><div class="wp-name">Tim B.</div><div class="wp-detail">Torschuss</div></div>
         <div class="wp-cell"></div>
-        <div class="wp-event einzel" onclick="notify('Fr 09:00 · Luca Wagner · Schwacher Fuß · Platz A · Coach Marco')"><div class="wp-name">Luca W.</div><div class="wp-detail">Schwacher Fuß</div></div>
-        <div class="wp-event camp" onclick="notify('Sa Camp läuft weiter')"><div class="wp-name">⚡ Camp</div><div class="wp-detail">Fortsetzung</div></div>
+        <div class="wp-event wp-einzel" onclick="notify('Fr 09:00 · Luca Wagner · Schwacher Fuß')"><div class="wp-name">Luca W.</div><div class="wp-detail">Schwacher Fuß</div></div>
+        <div class="wp-event wp-camp" onclick="notify('Sa Camp · Intensiv-Block 8–12 Uhr')"><div class="wp-name">Camp</div><div class="wp-detail">Intensiv-Block</div></div>
         <div class="wp-cell"></div>
-
+      </div>
+      <div class="wochenplan" style="margin-bottom:4px">
         <div class="wp-time">11:00</div>
         <div class="wp-cell"></div>
-        <div class="wp-event gruppe" onclick="notify('Di 11:00 · Gruppentraining U13 · 8 Spieler · Taktik · Platz B · Coach Sarah')"><div class="wp-name">Gruppe U13</div><div class="wp-detail">8 Spieler · Taktik</div></div>
+        <div class="wp-event wp-gruppe" onclick="notify('Di 11:00 · Gruppe U13 · 8 Spieler · Taktik')"><div class="wp-name">Gruppe U13</div><div class="wp-detail">8 Spieler · Taktik</div></div>
         <div class="wp-cell"></div>
-        <div class="wp-event gruppe" onclick="notify('Do 11:00 · Gruppentraining U15 · 6 Spieler · Kombispiel · Platz B')"><div class="wp-name">Gruppe U15</div><div class="wp-detail">6 Spieler</div></div>
-        <div class="wp-event gruppe" onclick="notify('Fr 11:00 · Gruppentraining Mix · 6 Spieler · Pressing · Platz B')"><div class="wp-name">Gruppe Mix</div><div class="wp-detail">6 Spieler</div></div>
-        <div class="wp-cell"></div><div class="wp-cell"></div>
-
-        <div class="wp-time">14:00</div>
-        <div class="wp-event einzel" onclick="notify('Mo 14:00 · Felix Huber · Kopfball & Abwehr · Platz A · Coach Marco')"><div class="wp-name">Felix H.</div><div class="wp-detail">Abwehr</div></div>
-        <div class="wp-event einzel" onclick="notify('Di 14:00 · Jonas Klein · Passspiel · Platz A · Coach Marco')"><div class="wp-name">Jonas K.</div><div class="wp-detail">Passspiel</div></div>
-        <div class="wp-cell"></div>
-        <div class="wp-event einzel" onclick="notify('Do 14:00 · Tim Berger · Ausdauer & Sprint · Platz A · Coach Sarah')"><div class="wp-name">Tim B.</div><div class="wp-detail">Ausdauer</div></div>
-        <div class="wp-event einzel" onclick="notify('Fr 14:00 · Tim Berger · Torschuss · Platz A · Coach Sarah')"><div class="wp-name">Tim B.</div><div class="wp-detail">Torschuss</div></div>
-        <div class="wp-cell"></div><div class="wp-cell"></div>
-
-        <div class="wp-time">16:00</div>
-        <div class="wp-event gruppe" onclick="notify('Mo 16:00 · Gruppe U15 · 8 Spieler · Pressing & Gegenpressing · Platz A+B')"><div class="wp-name">Gruppe U15</div><div class="wp-detail">8P · Pressing</div></div>
-        <div class="wp-event voll" onclick="notify('Di 16:00 · Gruppe VOLL · 12/12 · Kleinfeldspiel')"><div class="wp-name">Gruppe Voll ★</div><div class="wp-detail">12P · Spiel</div></div>
-        <div class="wp-event gruppe" onclick="notify('Mi 16:00 · Gruppe U12 · 6 Spieler · Grundtechnik')"><div class="wp-name">Gruppe U12</div><div class="wp-detail">6P · Technik</div></div>
-        <div class="wp-cell"></div>
-        <div class="wp-event gruppe" onclick="notify('Fr 16:00 · Gruppe Mix · 8 Spieler · Taktik + Spiel')"><div class="wp-name">Gruppe Mix</div><div class="wp-detail">8P · Taktik</div></div>
+        <div class="wp-event wp-gruppe" onclick="notify('Do 11:00 · Gruppe U15 · 6 Spieler · Kombispiel')"><div class="wp-name">Gruppe U15</div><div class="wp-detail">6 Spieler</div></div>
+        <div class="wp-event wp-gruppe" onclick="notify('Fr 11:00 · Gruppe Mix · 6 Spieler · Pressing')"><div class="wp-name">Gruppe Mix</div><div class="wp-detail">6 Spieler</div></div>
         <div class="wp-cell"></div><div class="wp-cell"></div>
       </div>
-      <div style="margin-top:14px;display:flex;gap:14px;flex-wrap:wrap;font-size:11px">
-        <span style="color:var(--lime)">■ Einzeltraining</span>
-        <span style="color:#60a5fa">■ Gruppentraining</span>
-        <span style="color:#fbbf24">■ Camp / Intensiv</span>
-        <span style="color:#ff6b6b">■ Ausgebucht</span>
+      <div class="wochenplan" style="margin-bottom:4px">
+        <div class="wp-time">14:00</div>
+        <div class="wp-event wp-einzel" onclick="notify('Mo 14:00 · Felix Huber · Kopfball & Abwehr')"><div class="wp-name">Felix H.</div><div class="wp-detail">Abwehr</div></div>
+        <div class="wp-event wp-einzel" onclick="notify('Di 14:00 · Jonas Klein · Passspiel')"><div class="wp-name">Jonas K.</div><div class="wp-detail">Passspiel</div></div>
+        <div class="wp-cell"></div>
+        <div class="wp-event wp-einzel" onclick="notify('Do 14:00 · Tim Berger · Ausdauer & Sprint')"><div class="wp-name">Tim B.</div><div class="wp-detail">Ausdauer</div></div>
+        <div class="wp-event wp-einzel" onclick="notify('Fr 14:00 · Tim Berger · Torschuss')"><div class="wp-name">Tim B.</div><div class="wp-detail">Torschuss</div></div>
+        <div class="wp-cell"></div><div class="wp-cell"></div>
+      </div>
+      <div class="wochenplan">
+        <div class="wp-time">16:00</div>
+        <div class="wp-event wp-gruppe" onclick="notify('Mo 16:00 · Gruppe U15 · 8P · Pressing')"><div class="wp-name">Gruppe U15</div><div class="wp-detail">8P · Pressing</div></div>
+        <div class="wp-event wp-gruppe" onclick="notify('Di 16:00 · Gruppe VOLL · 12P · Kleinfeldspiel')"><div class="wp-name">Gruppe Voll</div><div class="wp-detail">12P · Spiel</div></div>
+        <div class="wp-event wp-gruppe" onclick="notify('Mi 16:00 · Gruppe U12 · 6P · Grundtechnik')"><div class="wp-name">Gruppe U12</div><div class="wp-detail">6P · Technik</div></div>
+        <div class="wp-cell"></div>
+        <div class="wp-event wp-gruppe" onclick="notify('Fr 16:00 · Gruppe Mix · 8P · Taktik + Spiel')"><div class="wp-name">Gruppe Mix</div><div class="wp-detail">8P · Taktik</div></div>
+        <div class="wp-cell"></div><div class="wp-cell"></div>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:14px;font-size:11px">
+        <span style="color:#4a6db5;font-weight:500">■ Einzeltraining</span>
+        <span style="color:#2a6044;font-weight:500">■ Gruppentraining</span>
+        <span style="color:#a06a00;font-weight:500">■ Camp / Intensiv</span>
       </div>
     </div>
   </div>
 
-  <!-- TRAININGSEINHEITEN -->
+  <!-- EINHEITEN -->
   <div class="page" id="page-einheiten">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
-      <div class="section-header" style="margin-bottom:0"><div class="section-title">Trainingseinheiten</div><div class="section-sub">184 Einheiten Mai · Alle protokolliert</div></div>
-      <button class="btn btn-lime" onclick="openModal('modal-einheit')">+ Einheit</button>
+    <div class="sec-head">
+      <div><div class="sec-title">Trainingseinheiten</div><div class="sec-sub">184 Einheiten Mai · Alle protokolliert</div></div>
+      <button class="btn btn-dark" onclick="openModal('modal-einheit')">+ Einheit</button>
     </div>
-    <div class="card" style="padding:0">
+    <div class="card tbl-full" style="padding:0">
       <table class="tbl">
-        <thead><tr>
-          <th style="padding-left:18px">Datum</th><th>Spieler</th><th>Typ</th><th>Fokus</th><th>Dauer</th><th>Trainer</th><th>Bewertung</th><th style="padding-right:18px"></th>
-        </tr></thead>
+        <thead><tr><th>Datum</th><th>Spieler</th><th>Typ</th><th>Fokus</th><th>Dauer</th><th>Trainer</th><th>Bewertung</th><th></th></tr></thead>
         <tbody>
-          <tr onclick="notify('Einheit #48 · Luca Wagner · Dribbling top, schwacher Fuß Fokus nächste Einheiten')"><td style="padding-left:18px"><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">09.05.26</span></td><td><strong>Luca Wagner</strong></td><td><span class="badge b-lime">Einzel</span></td><td>Technik / Dribbling</td><td>60 Min</td><td>Marco</td><td>⭐⭐⭐⭐⭐</td><td style="padding-right:18px"><button class="btn btn-sm btn-outline" onclick="event.stopPropagation();notify('Notiz geöffnet')">Notiz</button></td></tr>
-          <tr onclick="notify('Gruppe U13 · 8 Spieler · Taktik 4-3-3 · gut aufgenommen')"><td style="padding-left:18px"><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">09.05.26</span></td><td><strong>Gruppe U13</strong> (8)</td><td><span class="badge b-blue">Gruppe</span></td><td>Taktik 4-3-3</td><td>75 Min</td><td>Marco</td><td>⭐⭐⭐⭐</td><td style="padding-right:18px"><button class="btn btn-sm btn-outline" onclick="event.stopPropagation();notify('Gruppennotiz geöffnet')">Notiz</button></td></tr>
-          <tr onclick="notify('Einheit #94 · Tim Berger · Torschuss · Starker Abschluss, sehr motiviert')"><td style="padding-left:18px"><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">08.05.26</span></td><td><strong>Tim Berger</strong></td><td><span class="badge b-lime">Einzel</span></td><td>Torschuss</td><td>60 Min</td><td>Sarah</td><td>⭐⭐⭐⭐⭐</td><td style="padding-right:18px"><button class="btn btn-sm btn-outline" onclick="event.stopPropagation();notify('Notiz geöffnet')">Notiz</button></td></tr>
-          <tr onclick="notify('Jonas Klein · #50 Meilenstein! · Passspiel stark verbessert')"><td style="padding-left:18px"><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">08.05.26</span></td><td><strong>Jonas Klein</strong> 🏆</td><td><span class="badge b-blue">Gruppe</span></td><td>Passspiel / Kombinationen</td><td>75 Min</td><td>Marco</td><td>⭐⭐⭐⭐</td><td style="padding-right:18px"><button class="btn btn-sm btn-outline" onclick="event.stopPropagation();notify('Meilenstein-Notiz geöffnet')">Notiz</button></td></tr>
-          <tr onclick="notify('Gruppe U15 · Pressing · Sehr intensive Einheit, alle Spieler am Limit')"><td style="padding-left:18px"><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">07.05.26</span></td><td><strong>Gruppe U15</strong> (6)</td><td><span class="badge b-blue">Gruppe</span></td><td>Pressing / Gegenpressing</td><td>90 Min</td><td>Sarah</td><td>⭐⭐⭐⭐⭐</td><td style="padding-right:18px"><button class="btn btn-sm btn-outline" onclick="event.stopPropagation();notify('Gruppennotiz geöffnet')">Notiz</button></td></tr>
+          <tr onclick="notify('Einheit #48 · Luca Wagner · Dribbling top')"><td><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">09.05.26</span></td><td><strong>Luca Wagner</strong></td><td><span class="badge b-dark">Einzel</span></td><td>Technik / Dribbling</td><td>60 Min</td><td>Marco</td><td style="font-family:'DM Mono',monospace;font-size:12px">★★★★★</td><td><button class="btn btn-sm" onclick="event.stopPropagation();notify('Notiz geöffnet')">Notiz</button></td></tr>
+          <tr onclick="notify('Gruppe U13 · 8 Spieler · Taktik 4-3-3')"><td><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">09.05.26</span></td><td><strong>Gruppe U13</strong> (8)</td><td><span class="badge b-info">Gruppe</span></td><td>Taktik 4-3-3</td><td>75 Min</td><td>Marco</td><td style="font-family:'DM Mono',monospace;font-size:12px">★★★★</td><td><button class="btn btn-sm" onclick="event.stopPropagation();notify('Notiz geöffnet')">Notiz</button></td></tr>
+          <tr onclick="notify('Einheit #94 · Tim Berger · Torschuss stark')"><td><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">08.05.26</span></td><td><strong>Tim Berger</strong></td><td><span class="badge b-dark">Einzel</span></td><td>Torschuss</td><td>60 Min</td><td>Sarah</td><td style="font-family:'DM Mono',monospace;font-size:12px">★★★★★</td><td><button class="btn btn-sm" onclick="event.stopPropagation();notify('Notiz geöffnet')">Notiz</button></td></tr>
+          <tr onclick="notify('Jonas Klein · #50 Meilenstein!')"><td><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">08.05.26</span></td><td><strong>Jonas Klein</strong></td><td><span class="badge b-info">Gruppe</span></td><td>Passspiel / Kombinationen</td><td>75 Min</td><td>Marco</td><td style="font-family:'DM Mono',monospace;font-size:12px">★★★★</td><td><button class="btn btn-sm" onclick="event.stopPropagation();notify('Notiz geöffnet')">Notiz</button></td></tr>
+          <tr onclick="notify('Gruppe U15 · Pressing · Sehr intensive Einheit')"><td><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">07.05.26</span></td><td><strong>Gruppe U15</strong> (6)</td><td><span class="badge b-info">Gruppe</span></td><td>Pressing / Gegenpressing</td><td>90 Min</td><td>Sarah</td><td style="font-family:'DM Mono',monospace;font-size:12px">★★★★★</td><td><button class="btn btn-sm" onclick="event.stopPropagation();notify('Notiz geöffnet')">Notiz</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- KOMMUNIKATION -->
+  <div class="page" id="page-kommunikation">
+    <div class="sec-head">
+      <div><div class="sec-title">Eltern-Kommunikation</div><div class="sec-sub">Alle Kontakte & Gesprächshistorie</div></div>
+      <button class="btn btn-dark" onclick="openModal('modal-komm')">+ Neuer Eintrag</button>
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
+      <button class="btn btn-sm">Alle</button>
+      <button class="btn btn-sm">Telefon</button>
+      <button class="btn btn-sm">E-Mail</button>
+      <button class="btn btn-sm">WhatsApp</button>
+      <button class="btn btn-sm">Persönlich</button>
+      <button class="btn btn-sm" style="margin-left:auto">Wiedervorlage</button>
+    </div>
+    <div class="card tbl-full" style="padding:0">
+      <table class="tbl">
+        <thead><tr><th>Datum</th><th>Spieler</th><th>Kontakt</th><th>Kanal</th><th>Thema</th><th>Notiz</th><th>Erstellt von</th><th>WV</th></tr></thead>
+        <tbody>
+          <tr onclick="notify('Wagner – Upgrade auf 3×/Woche besprochen, Entscheidung bis 20.05.')"><td><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">09.05.26</span></td><td><strong>Luca Wagner</strong></td><td style="font-size:12px">Thomas Wagner</td><td><span class="kanal-tag">Telefon</span></td><td>Upgrade auf 3×/Woche</td><td style="font-size:12px;color:var(--muted);max-width:180px">Sehr zufrieden, überlegt Elite-Paket. Entscheidung bis 20.05.</td><td style="font-size:12px;color:var(--muted)">Coach Marco</td><td><span class="badge b-warn">20.05.</span></td></tr>
+          <tr onclick="notify('Huber – Premium-Upgrade gewünscht, Infos per Mail')"><td><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">08.05.26</span></td><td><strong>Felix Huber</strong></td><td style="font-size:12px">Sandra Huber</td><td><span class="kanal-tag">Telefon</span></td><td>Paket-Upgrade</td><td style="font-size:12px;color:var(--muted);max-width:180px">Möchte von Standard auf Premium wechseln. Infos verschickt.</td><td style="font-size:12px;color:var(--muted)">Büro</td><td><span class="badge b-warn">15.05.</span></td></tr>
+          <tr onclick="notify('Klein – Mai-Beitrag offen, Zahlung bis 12.05.')"><td><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">07.05.26</span></td><td><strong>Jonas Klein</strong></td><td style="font-size:12px">Peter Klein</td><td><span class="kanal-tag">E-Mail</span></td><td>Zahlungserinnerung</td><td style="font-size:12px;color:var(--muted);max-width:180px">Mai-Beitrag offen. Freundliche Erinnerung gesendet.</td><td style="font-size:12px;color:var(--muted)">Büro</td><td><span class="badge b-danger">12.05.</span></td></tr>
+          <tr onclick="notify('Richter – Verletzung besprochen, Reha-Plan abgestimmt')"><td><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">07.05.26</span></td><td><strong>Max Richter</strong></td><td style="font-size:12px">Karin Richter</td><td><span class="kanal-tag">WhatsApp</span></td><td>Verletzungsprotokoll</td><td style="font-size:12px;color:var(--muted);max-width:180px">Mutter über Verletzung informiert. Reha-Plan erklärt.</td><td style="font-size:12px;color:var(--muted)">Coach Marco</td><td><span class="badge b-neutral">16.05.</span></td></tr>
+          <tr onclick="notify('Wendt – Eltern fragen nach Motivationsproblem')"><td><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">05.05.26</span></td><td><strong>Paul Wendt</strong></td><td style="font-size:12px">Klaus Wendt</td><td><span class="kanal-tag">Persönlich</span></td><td>Fehlzeiten / Motivation</td><td style="font-size:12px;color:var(--muted);max-width:180px">Vater fragt nach 14-Tage-Absenz. Gespräch geführt, Termin vereinbart.</td><td style="font-size:12px;color:var(--muted)">Coach Sarah</td><td><span class="badge b-ok">erledigt</span></td></tr>
+          <tr onclick="notify('Berger – Empfehlungsschreiben für FC Bayern Nachwuchs')"><td><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">03.05.26</span></td><td><strong>Tim Berger</strong></td><td style="font-size:12px">Markus Berger</td><td><span class="kanal-tag">E-Mail</span></td><td>Empfehlungsschreiben</td><td style="font-size:12px;color:var(--muted);max-width:180px">Fragt nach Schreiben für Probetraining FC Bayern Nachwuchs.</td><td style="font-size:12px;color:var(--muted)">Coach Marco</td><td><span class="badge b-warn">18.05.</span></td></tr>
+          <tr onclick="notify('Wagner – Sommercamp Infos angefragt')"><td><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">02.04.26</span></td><td><strong>Luca Wagner</strong></td><td style="font-size:12px">Thomas Wagner</td><td><span class="kanal-tag">Telefon</span></td><td>Sommercamp-Anfrage</td><td style="font-size:12px;color:var(--muted);max-width:180px">Infos zum Sommercamp gewünscht. PDF-Broschüre per Mail.</td><td style="font-size:12px;color:var(--muted)">Büro</td><td><span class="badge b-ok">erledigt</span></td></tr>
+          <tr onclick="notify('Klein – Quartalsgespräch Q1, Eltern sehr zufrieden')"><td><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">28.03.26</span></td><td><strong>Jonas Klein</strong></td><td style="font-size:12px">Peter Klein</td><td><span class="kanal-tag">Persönlich</span></td><td>Quartalsgespräch Q1</td><td style="font-size:12px;color:var(--muted);max-width:180px">Fortschrittsbericht besprochen. Eltern zufrieden, wollen mehr Einheiten.</td><td style="font-size:12px;color:var(--muted)">Coach Marco</td><td><span class="badge b-ok">erledigt</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -645,51 +540,51 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 
   <!-- PAKETE -->
   <div class="page" id="page-pakete">
-    <div class="section-header"><div class="section-title">Pakete & Preise</div><div class="section-sub">3 aktive Pakete · 42 Spieler</div></div>
-    <div class="paket-grid" style="margin-bottom:24px">
+    <div class="sec-head"><div><div class="sec-title">Pakete & Preise</div><div class="sec-sub">3 aktive Pakete · 42 Spieler</div></div></div>
+    <div class="paket-grid">
       <div class="paket">
         <div class="paket-name">Starter</div>
         <div class="paket-price">120 €</div>
         <div class="paket-period">pro Monat · 1× / Woche · 14 Spieler</div>
-        <div class="paket-feature">1 Einzeltraining / Woche (60 Min)</div>
-        <div class="paket-feature">Monatliche Bewertung</div>
-        <div class="paket-feature">Trainer-Notizen digital</div>
-        <div class="paket-feature">Eltern-Feedback per E-Mail</div>
-        <div style="margin-top:16px"><button class="btn btn-sm btn-outline" onclick="notify('Paket-Details geöffnet')">Details</button></div>
+        <div class="paket-feat">1 Einzeltraining / Woche (60 Min)</div>
+        <div class="paket-feat">Monatliche Bewertung</div>
+        <div class="paket-feat">Trainer-Notizen digital</div>
+        <div class="paket-feat">Eltern-Feedback per E-Mail</div>
+        <div style="margin-top:14px"><button class="btn btn-sm" onclick="notify('Paket-Details geöffnet')">Details</button></div>
       </div>
       <div class="paket featured">
         <div class="paket-hot">Beliebtestes</div>
         <div class="paket-name">Premium</div>
         <div class="paket-price">220 €</div>
         <div class="paket-period">pro Monat · 2× / Woche · 22 Spieler</div>
-        <div class="paket-feature">2 Einzeltrainings / Woche</div>
-        <div class="paket-feature">Wöchentliche Skill-Bewertung</div>
-        <div class="paket-feature">Video-Feedback (1× / Monat)</div>
-        <div class="paket-feature">Elterngespräch quartalsweise</div>
-        <div class="paket-feature">Priorität bei Camp-Buchung</div>
-        <div style="margin-top:16px"><button class="btn btn-sm btn-lime" onclick="notify('Paket-Details geöffnet')">Details</button></div>
+        <div class="paket-feat">2 Einzeltrainings / Woche</div>
+        <div class="paket-feat">Wöchentliche Skill-Bewertung</div>
+        <div class="paket-feat">Video-Feedback (1× / Monat)</div>
+        <div class="paket-feat">Elterngespräch quartalsweise</div>
+        <div class="paket-feat">Priorität bei Camp-Buchung</div>
+        <div style="margin-top:14px"><button class="btn btn-dark btn-sm" onclick="notify('Paket-Details geöffnet')">Details</button></div>
       </div>
       <div class="paket">
         <div class="paket-name">Elite</div>
         <div class="paket-price">380 €</div>
         <div class="paket-period">pro Monat · 3× / Woche · 6 Spieler</div>
-        <div class="paket-feature">3 Einzeltrainings / Woche</div>
-        <div class="paket-feature">Individueller Trainingsplan</div>
-        <div class="paket-feature">Video-Analyse jede Einheit</div>
-        <div class="paket-feature">Monatliches Elterngespräch</div>
-        <div class="paket-feature">Camp inklusive (1× / Jahr)</div>
-        <div class="paket-feature">Empfehlungsschreiben für Vereine</div>
-        <div style="margin-top:16px"><button class="btn btn-sm btn-outline" onclick="notify('Paket-Details geöffnet')">Details</button></div>
+        <div class="paket-feat">3 Einzeltrainings / Woche</div>
+        <div class="paket-feat">Individueller Trainingsplan</div>
+        <div class="paket-feat">Video-Analyse jede Einheit</div>
+        <div class="paket-feat">Monatliches Elterngespräch</div>
+        <div class="paket-feat">Camp inklusive (1× / Jahr)</div>
+        <div class="paket-feat">Empfehlungsschreiben für Vereine</div>
+        <div style="margin-top:14px"><button class="btn btn-sm" onclick="notify('Paket-Details geöffnet')">Details</button></div>
       </div>
     </div>
     <div class="card">
-      <div class="card-header"><div class="card-title">Gruppen & Camps</div></div>
+      <div class="card-head"><div class="card-title">Gruppen & Camps</div></div>
       <table class="tbl">
-        <thead><tr><th>Angebot</th><th>Größe</th><th>Frequenz</th><th>Preis</th><th>Aktive Gruppen</th><th></th></tr></thead>
+        <thead><tr><th>Angebot</th><th>Größe</th><th>Frequenz</th><th>Preis</th><th>Status</th><th></th></tr></thead>
         <tbody>
-          <tr><td><strong>Gruppentraining</strong></td><td>4–8 Spieler</td><td>1–2× / Woche</td><td>65 €/Monat</td><td>6 Gruppen</td><td><button class="btn btn-sm btn-outline" onclick="notify('Gruppenübersicht geöffnet')">Ansehen</button></td></tr>
-          <tr><td><strong>Sommercamp</strong></td><td>max. 16</td><td>1 Woche intensiv</td><td>380 € / Woche</td><td>2 geplant</td><td><button class="btn btn-sm btn-outline" onclick="notify('Camp-Details geöffnet')">Details</button></td></tr>
-          <tr><td><strong>Feriencamp (Tages)</strong></td><td>max. 12</td><td>Mo–Fr 9–15 Uhr</td><td>240 € / Woche</td><td>3 gebucht</td><td><button class="btn btn-sm btn-outline" onclick="notify('Feriencamp geöffnet')">Details</button></td></tr>
+          <tr><td><strong>Gruppentraining</strong></td><td>4–8 Spieler</td><td>1–2× / Woche</td><td>65 €/Mo.</td><td><span class="badge b-ok">6 Gruppen</span></td><td><button class="btn btn-sm" onclick="notify('Gruppenübersicht geöffnet')">Ansehen</button></td></tr>
+          <tr><td><strong>Sommercamp</strong></td><td>max. 16</td><td>1 Woche intensiv</td><td>380 € / Woche</td><td><span class="badge b-neutral">2 geplant</span></td><td><button class="btn btn-sm" onclick="notify('Camp-Details geöffnet')">Details</button></td></tr>
+          <tr><td><strong>Feriencamp (Tages)</strong></td><td>max. 12</td><td>Mo–Fr 9–15 Uhr</td><td>240 € / Woche</td><td><span class="badge b-info">3 gebucht</span></td><td><button class="btn btn-sm" onclick="notify('Feriencamp geöffnet')">Details</button></td></tr>
         </tbody>
       </table>
     </div>
@@ -697,31 +592,31 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 
   <!-- FINANZEN -->
   <div class="page" id="page-finanzen">
-    <div class="section-header"><div class="section-title">Finanzen</div><div class="section-sub">Mai 2026</div></div>
+    <div class="sec-head"><div><div class="sec-title">Finanzen</div><div class="sec-sub">Mai 2026</div></div></div>
     <div class="kpi-grid">
-      <div class="kpi"><div class="kpi-label">Umsatz Mai</div><div class="kpi-value">11.840 €</div><div class="kpi-sub"><span class="up">↑ +14%</span> vs. April</div></div>
-      <div class="kpi amber"><div class="kpi-label">Jahresumsatz</div><div class="kpi-value">52.400 €</div><div class="kpi-sub">Prognose: 128k €</div></div>
-      <div class="kpi blue"><div class="kpi-label">Ø pro Spieler</div><div class="kpi-value">281 €</div><div class="kpi-sub">Monatlich</div></div>
-      <div class="kpi red"><div class="kpi-label">Offene Beiträge</div><div class="kpi-value">640 €</div><div class="kpi-sub">3 Spieler · Mahnung</div></div>
+      <div class="kpi k-dark"><div class="kpi-label">Umsatz Mai</div><div class="kpi-value">11.840 €</div><div class="kpi-sub"><span class="up">↑ +14%</span> vs. April</div></div>
+      <div class="kpi k-warn"><div class="kpi-label">Jahresumsatz</div><div class="kpi-value">52.400 €</div><div class="kpi-sub">Prognose: 128k €</div></div>
+      <div class="kpi k-ok"><div class="kpi-label">Ø pro Spieler</div><div class="kpi-value">281 €</div><div class="kpi-sub">Monatlich</div></div>
+      <div class="kpi k-danger"><div class="kpi-label">Offene Beiträge</div><div class="kpi-value">640 €</div><div class="kpi-sub">3 Spieler · Mahnung</div></div>
     </div>
-    <div class="grid-2">
+    <div class="g2">
       <div class="card">
-        <div class="card-header"><div class="card-title">Monatsumsatz 2026</div></div>
+        <div class="card-head"><div class="card-title">Monatsumsatz 2026</div></div>
         <div class="bar-chart">
-          <div class="bar-col"><div class="bar-val">8.4k</div><div class="bar" style="height:71%;background:var(--lime);opacity:.5"></div><div class="bar-label">Jan</div></div>
-          <div class="bar-col"><div class="bar-val">8.8k</div><div class="bar" style="height:74%;background:var(--lime);opacity:.6"></div><div class="bar-label">Feb</div></div>
-          <div class="bar-col"><div class="bar-val">9.6k</div><div class="bar" style="height:81%;background:var(--lime);opacity:.7"></div><div class="bar-label">Mär</div></div>
-          <div class="bar-col"><div class="bar-val">10.4k</div><div class="bar" style="height:88%;background:var(--lime);opacity:.8"></div><div class="bar-label">Apr</div></div>
-          <div class="bar-col"><div class="bar-val">11.8k</div><div class="bar" style="height:100%;background:var(--lime)"></div><div class="bar-label" style="color:var(--lime)">Mai★</div></div>
+          <div class="bar-col"><div class="bar-val">8.4k</div><div class="bar" style="height:71%;opacity:.4"></div><div class="bar-lbl">Jan</div></div>
+          <div class="bar-col"><div class="bar-val">8.8k</div><div class="bar" style="height:74%;opacity:.5"></div><div class="bar-lbl">Feb</div></div>
+          <div class="bar-col"><div class="bar-val">9.6k</div><div class="bar" style="height:81%;opacity:.6"></div><div class="bar-lbl">Mär</div></div>
+          <div class="bar-col"><div class="bar-val">10.4k</div><div class="bar" style="height:88%;opacity:.7"></div><div class="bar-lbl">Apr</div></div>
+          <div class="bar-col"><div class="bar-val">11.8k</div><div class="bar" style="height:100%"></div><div class="bar-lbl" style="color:var(--text);font-weight:700">Mai</div></div>
         </div>
       </div>
       <div class="card">
-        <div class="card-header"><div class="card-title">Umsatz nach Paket</div></div>
+        <div class="card-head"><div class="card-title">Umsatz nach Paket</div></div>
         <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px">
-          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Premium (22 Spieler)</span><strong style="color:var(--lime)">4.840 €</strong></div><div style="height:6px;background:var(--border);border-radius:3px"><div style="height:100%;width:41%;background:var(--lime);border-radius:3px"></div></div></div>
-          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Elite (6 Spieler)</span><strong style="color:var(--amber)">2.280 €</strong></div><div style="height:6px;background:var(--border);border-radius:3px"><div style="height:100%;width:19%;background:var(--amber);border-radius:3px"></div></div></div>
-          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Starter (14 Spieler)</span><strong style="color:var(--blue)">1.680 €</strong></div><div style="height:6px;background:var(--border);border-radius:3px"><div style="height:100%;width:14%;background:var(--blue);border-radius:3px"></div></div></div>
-          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Gruppen & Camps</span><strong style="color:var(--cyan)">3.040 €</strong></div><div style="height:6px;background:var(--border);border-radius:3px"><div style="height:100%;width:26%;background:var(--cyan);border-radius:3px"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Premium (22 Spieler)</span><strong>4.840 €</strong></div><div style="height:4px;background:var(--bg2);border-radius:2px"><div style="height:100%;width:41%;background:var(--text);border-radius:2px"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Elite (6 Spieler)</span><strong>2.280 €</strong></div><div style="height:4px;background:var(--bg2);border-radius:2px"><div style="height:100%;width:19%;background:var(--text);border-radius:2px;opacity:.7"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Starter (14 Spieler)</span><strong>1.680 €</strong></div><div style="height:4px;background:var(--bg2);border-radius:2px"><div style="height:100%;width:14%;background:var(--text);border-radius:2px;opacity:.5"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Gruppen & Camps</span><strong>3.040 €</strong></div><div style="height:4px;background:var(--bg2);border-radius:2px"><div style="height:100%;width:26%;background:var(--text);border-radius:2px;opacity:.4"></div></div></div>
         </div>
       </div>
     </div>
@@ -731,81 +626,63 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 <!-- MODALS -->
 <div class="modal-overlay" id="modal-spieler">
   <div class="modal">
-    <div class="modal-title">⚽ Neuer Spieler</div>
-    <div class="field-row">
-      <div class="field"><label>Vorname</label><input placeholder="Luca"></div>
-      <div class="field"><label>Nachname</label><input placeholder="Müller"></div>
-    </div>
-    <div class="field-row">
-      <div class="field"><label>Geburtsjahr</label><input placeholder="2011"></div>
-      <div class="field"><label>Position</label><select><option>Stürmer</option><option>Mittelfeld</option><option>Verteidiger</option><option>Torwart</option></select></div>
-    </div>
+    <div class="modal-title">Neuer Spieler</div>
+    <div class="field-row"><div class="field"><label>Vorname</label><input placeholder="Luca"></div><div class="field"><label>Nachname</label><input placeholder="Müller"></div></div>
+    <div class="field-row"><div class="field"><label>Geburtsjahr</label><input placeholder="2011"></div><div class="field"><label>Position</label><select><option>Stürmer</option><option>Mittelfeld</option><option>Verteidiger</option><option>Torwart</option></select></div></div>
     <div class="field"><label>Paket</label><select><option>Starter – 120 €/Mo</option><option>Premium – 220 €/Mo</option><option>Elite – 380 €/Mo</option><option>Gruppe – 65 €/Mo</option></select></div>
-    <div class="field-row">
-      <div class="field"><label>Eltern Name</label><input placeholder="Thomas Müller"></div>
-      <div class="field"><label>Eltern Telefon</label><input placeholder="+49 170…"></div>
-    </div>
+    <div class="field-row"><div class="field"><label>Eltern Name</label><input placeholder="Thomas Müller"></div><div class="field"><label>Eltern Telefon</label><input placeholder="+49 170…"></div></div>
     <div class="field"><label>Eltern E-Mail</label><input placeholder="eltern@beispiel.de"></div>
-    <div class="field"><label>Erste Notiz / Ziel</label><textarea rows="2" placeholder="Stärken, Schwächen, besondere Wünsche der Eltern…"></textarea></div>
-    <div class="modal-footer">
-      <button class="btn btn-outline" onclick="closeModal('modal-spieler')">Abbrechen</button>
-      <button class="btn btn-lime" onclick="closeModal('modal-spieler');notify('Spieler angelegt – Willkommens-E-Mail an Eltern gesendet ✓')">Anlegen & E-Mail senden</button>
-    </div>
+    <div class="field"><label>Erste Notiz / Ziel</label><textarea rows="2" placeholder="Stärken, Schwächen, besondere Wünsche…"></textarea></div>
+    <div class="modal-footer"><button class="btn" onclick="closeModal('modal-spieler')">Abbrechen</button><button class="btn btn-dark" onclick="closeModal('modal-spieler');notify('Spieler angelegt – Willkommens-E-Mail gesendet ✓')">Anlegen & E-Mail senden</button></div>
   </div>
 </div>
 
 <div class="modal-overlay" id="modal-notiz">
   <div class="modal">
-    <div class="modal-title">📝 Notiz hinzufügen</div>
+    <div class="modal-title">Notiz hinzufügen</div>
     <div class="field"><label>Spieler</label><select><option>Luca Wagner</option><option>Jonas Klein</option><option>Tim Berger</option><option>Felix Huber</option></select></div>
-    <div class="field-row">
-      <div class="field"><label>Typ</label><select><option>Training</option><option>Fortschritt-Update</option><option>Elterngespräch</option><option>Verletzung</option><option>Meilenstein</option></select></div>
-      <div class="field"><label>Einheiten-Nr.</label><input placeholder="#48"></div>
-    </div>
-    <div class="field"><label>Notiz</label><textarea rows="4" placeholder="Was lief gut? Was ist der Fokus fürs nächste Training? Besonderheiten…"></textarea></div>
+    <div class="field-row"><div class="field"><label>Typ</label><select><option>Training</option><option>Fortschritt-Update</option><option>Elterngespräch</option><option>Verletzung</option><option>Meilenstein</option></select></div><div class="field"><label>Einheiten-Nr.</label><input placeholder="#48"></div></div>
+    <div class="field"><label>Notiz</label><textarea rows="4" placeholder="Was lief gut? Was ist der Fokus fürs nächste Training?"></textarea></div>
     <div class="field"><label>Skill-Updates (optional)</label><input placeholder="z.B. Technik +3, Schnelligkeit +1"></div>
-    <div class="modal-footer">
-      <button class="btn btn-outline" onclick="closeModal('modal-notiz')">Abbrechen</button>
-      <button class="btn btn-lime" onclick="closeModal('modal-notiz');notify('Notiz gespeichert ✓')">Speichern</button>
-    </div>
+    <div class="modal-footer"><button class="btn" onclick="closeModal('modal-notiz')">Abbrechen</button><button class="btn btn-dark" onclick="closeModal('modal-notiz');notify('Notiz gespeichert ✓')">Speichern</button></div>
   </div>
 </div>
 
 <div class="modal-overlay" id="modal-einheit">
   <div class="modal">
-    <div class="modal-title">⚽ Einheit planen</div>
-    <div class="field-row">
-      <div class="field"><label>Datum</label><input type="date" value="2026-05-12"></div>
-      <div class="field"><label>Uhrzeit</label><input type="time" value="09:00"></div>
-    </div>
-    <div class="field-row">
-      <div class="field"><label>Typ</label><select><option>Einzeltraining</option><option>Gruppentraining</option><option>Camp-Einheit</option></select></div>
-      <div class="field"><label>Dauer</label><select><option>45 Min</option><option>60 Min</option><option>75 Min</option><option>90 Min</option></select></div>
-    </div>
-    <div class="field"><label>Spieler / Gruppe</label><select><option>Luca Wagner</option><option>Jonas Klein</option><option>Tim Berger</option><option>Gruppe U13</option><option>Gruppe U15</option></select></div>
-    <div class="field-row">
-      <div class="field"><label>Trainer</label><select><option>Coach Marco</option><option>Coach Sarah</option></select></div>
-      <div class="field"><label>Fokus</label><input placeholder="z.B. Technik, Torschuss…"></div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-outline" onclick="closeModal('modal-einheit')">Abbrechen</button>
-      <button class="btn btn-lime" onclick="closeModal('modal-einheit');notify('Einheit geplant – Erinnerung an Eltern gesendet ✓')">Planen & benachrichtigen</button>
-    </div>
+    <div class="modal-title">Einheit planen</div>
+    <div class="field-row"><div class="field"><label>Datum</label><input type="date" value="2026-05-12"></div><div class="field"><label>Uhrzeit</label><input type="time" value="09:00"></div></div>
+    <div class="field-row"><div class="field"><label>Typ</label><select><option>Einzeltraining</option><option>Gruppentraining</option><option>Camp-Einheit</option></select></div><div class="field"><label>Dauer</label><select><option>45 Min</option><option>60 Min</option><option>75 Min</option><option>90 Min</option></select></div></div>
+    <div class="field"><label>Spieler / Gruppe</label><select><option>Luca Wagner</option><option>Jonas Klein</option><option>Tim Berger</option><option>Felix Huber</option><option>Gruppe U13</option><option>Gruppe U15</option></select></div>
+    <div class="field-row"><div class="field"><label>Trainer</label><select><option>Coach Marco</option><option>Coach Sarah</option></select></div><div class="field"><label>Fokus</label><input placeholder="z.B. Technik, Torschuss…"></div></div>
+    <div class="modal-footer"><button class="btn" onclick="closeModal('modal-einheit')">Abbrechen</button><button class="btn btn-dark" onclick="closeModal('modal-einheit');notify('Einheit geplant ✓')">Planen & benachrichtigen</button></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-komm">
+  <div class="modal">
+    <div class="modal-title">Neuer Kommunikations-Eintrag</div>
+    <div class="field-row"><div class="field"><label>Spieler</label><select><option>Luca Wagner</option><option>Jonas Klein</option><option>Tim Berger</option><option>Felix Huber</option><option>Max Richter</option><option>Paul Wendt</option></select></div><div class="field"><label>Kontaktperson</label><input placeholder="Thomas Wagner"></div></div>
+    <div class="field-row"><div class="field"><label>Kanal</label><select><option>Telefon</option><option>E-Mail</option><option>WhatsApp</option><option>Persönlich</option></select></div><div class="field"><label>Datum</label><input type="date" value="2026-05-09"></div></div>
+    <div class="field"><label>Thema</label><input placeholder="z.B. Upgrade-Anfrage, Fortschritts-Update…"></div>
+    <div class="field"><label>Notiz</label><textarea rows="3" placeholder="Was wurde besprochen? Welche nächsten Schritte?"></textarea></div>
+    <div class="field-row"><div class="field"><label>Erstellt von</label><select><option>Coach Marco</option><option>Coach Sarah</option><option>Büro</option></select></div><div class="field"><label>Wiedervorlage (optional)</label><input type="date"></div></div>
+    <div class="modal-footer"><button class="btn" onclick="closeModal('modal-komm')">Abbrechen</button><button class="btn btn-dark" onclick="closeModal('modal-komm');notify('Eintrag gespeichert ✓')">Speichern</button></div>
   </div>
 </div>
 
 <div class="notif" id="notif"></div>
 
 <script>
-function showPage(id) {
+const titles={dashboard:'Dashboard',spieler:'Spieler & Profile',detail:'Spieler-Detail',trainingsplan:'Trainingsplan',einheiten:'Trainingseinheiten',kommunikation:'Eltern-Kommunikation',pakete:'Pakete & Preise',finanzen:'Finanzen'};
+function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
-  const titles={dashboard:'Dashboard',spieler:'Spieler & Profile',detail:'Spieler-Detail',trainingsplan:'Trainingsplan',einheiten:'Trainingseinheiten',pakete:'Pakete & Preise',finanzen:'Finanzen'};
   document.getElementById('page-title').textContent=titles[id]||id;
   document.querySelectorAll('.nav-item').forEach(n=>{
     const t=n.textContent.trim().toLowerCase();
-    if((id==='dashboard'&&t.includes('dashboard'))||(id==='spieler'&&t.includes('spieler & p'))||(id==='detail'&&t.includes('spieler-d'))||(id==='trainingsplan'&&t.includes('trainingsplan'))||(id==='einheiten'&&t.includes('einheiten'))||(id==='pakete'&&t.includes('pakete'))||(id==='finanzen'&&t.includes('finanzen')))n.classList.add('active');
+    if((id==='dashboard'&&t.includes('dashboard'))||(id==='spieler'&&t.includes('spieler & p'))||(id==='detail'&&t.includes('spieler-d'))||(id==='trainingsplan'&&t.includes('trainingsplan'))||(id==='einheiten'&&t.includes('einheiten'))||(id==='kommunikation'&&t.includes('eltern-k'))||(id==='pakete'&&t.includes('pakete'))||(id==='finanzen'&&t.includes('finanzen')))n.classList.add('active');
   });
 }
 function openModal(id){document.getElementById(id).classList.add('open')}
@@ -815,7 +692,7 @@ function notify(msg){
   const el=document.getElementById('notif');
   el.textContent=msg;el.style.display='block';
   clearTimeout(window._nt);
-  window._nt=setTimeout(()=>{el.style.display='none'},3500);
+  window._nt=setTimeout(()=>{el.style.display='none'},3200);
 }
 </script>
 </body>
